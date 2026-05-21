@@ -1,12 +1,13 @@
 import { getPayload } from 'payload'
 import config from '@payload-config'
+import type { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical'
 
 export interface ParsedPost {
   id: string
   slug: string
   title: string
   excerpt: string | null
-  body: string
+  body: SerializedEditorState
   publishedAt: string | null
 }
 

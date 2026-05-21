@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getPostBySlug } from "@/lib/posts";
+import { convertLexicalToHTML } from "@payloadcms/richtext-lexical/html";
 
 interface PostPageProps {
   params: Promise<{ slug: string }>;
@@ -49,7 +50,7 @@ export default async function PostPage({ params }: PostPageProps) {
 
       <div
         className="prose prose-stone max-w-none text-[#3D0C11] prose-headings:font-[var(--font-figtree)] prose-headings:text-[#3D0C11] prose-a:text-[#BF6900] prose-a:no-underline hover:prose-a:underline"
-        dangerouslySetInnerHTML={{ __html: post.body }}
+        dangerouslySetInnerHTML={{ __html: convertLexicalToHTML({ data: post.body }) }}
       />
     </div>
   );
