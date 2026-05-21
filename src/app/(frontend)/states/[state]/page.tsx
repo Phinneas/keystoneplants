@@ -4,6 +4,8 @@ import Link from "next/link";
 import { NurseryCard } from "@/components/NurseryCard";
 import { getNurseriesByState } from "@/lib/nurseries";
 
+export const dynamic = 'force-dynamic'
+
 const STATE_META: Record<string, { name: string; blurb: string; ecoregions: string }> = {
   PA: {
     name: "Pennsylvania",
