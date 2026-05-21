@@ -22,7 +22,8 @@
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
     "test": "pnpm run test:int && pnpm run test:e2e",
     "test:e2e": "cross-env NODE_OPTIONS=\"--no-deprecation --import=tsx/esm\" playwright test --config=playwright.config.ts",
-    "test:int": "cross-env NODE_OPTIONS=--no-deprecation vitest run --config ./vitest.config.mts"
+    "test:int": "cross-env NODE_OPTIONS=--no-deprecation vitest run --config ./vitest.config.mts",
+    "seed": "cross-env NODE_OPTIONS=--no-deprecation tsx src/seed.ts"
   },
   "dependencies": {
     "@opennextjs/cloudflare": "^1.11.0",
@@ -31,13 +32,16 @@
     "@payloadcms/richtext-lexical": "3.82.1",
     "@payloadcms/storage-r2": "3.82.1",
     "@payloadcms/ui": "3.82.1",
+    "@tailwindcss/postcss": "^4.3.0",
+    "@tailwindcss/typography": "^0.5.19",
     "cross-env": "^7.0.3",
     "dotenv": "16.4.7",
     "graphql": "^16.8.1",
     "next": "15.4.11",
     "payload": "3.82.1",
     "react": "19.2.1",
-    "react-dom": "19.2.1"
+    "react-dom": "19.2.1",
+    "tailwindcss": "^4.3.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",

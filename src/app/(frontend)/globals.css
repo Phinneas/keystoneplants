@@ -1,0 +1,56 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+:root {
+  --background: #ffffff;
+  --foreground: #3D0C11;
+  --muted: #f8fef3;
+  --muted-foreground: #6b5b5d;
+  --border: #e8f5d8;
+  --primary: #3D0C11;
+  --primary-foreground: #ffffff;
+  --accent: #DDFC74;
+  --accent-foreground: #3D0C11;
+  --secondary: #D3F9B5;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-noto);
+  --font-heading: var(--font-figtree);
+}
+
+body {
+  color: var(--foreground);
+}
+
+.prose p {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+}
+
+.prose h2 {
+  margin-top: 2.5em;
+  margin-bottom: 1em;
+}
+
+.prose h3 {
+  margin-top: 2em;
+  margin-bottom: 0.75em;
+}
+
+.prose blockquote {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.prose table {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.prose ol, .prose ul {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}

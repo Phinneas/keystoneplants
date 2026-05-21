@@ -69,6 +69,10 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
+    nurseries: Nursery;
+    plants: Plant;
+    posts: Post;
+    'zip-regions': ZipRegion;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -78,6 +82,10 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    nurseries: NurseriesSelect<false> | NurseriesSelect<true>;
+    plants: PlantsSelect<false> | PlantsSelect<true>;
+    posts: PostsSelect<false> | PostsSelect<true>;
+    'zip-regions': ZipRegionsSelect<false> | ZipRegionsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -161,6 +169,102 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "nurseries".
+ */
+export interface Nursery {
+  id: number;
+  slug: string;
+  name: string;
+  description?: string | null;
+  address?: string | null;
+  city: string;
+  state: string;
+  zip: string;
+  website?: string | null;
+  phone?: string | null;
+  isNativeOnly?: boolean | null;
+  specialties?:
+    | ('trees' | 'shrubs' | 'perennials' | 'grasses' | 'prairie' | 'pollinators' | 'wetland' | 'ferns' | 'vines')[]
+    | null;
+  photos?:
+    | {
+        url: string;
+        id?: string | null;
+      }[]
+    | null;
+  lat?: number | null;
+  lng?: number | null;
+  verified?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "plants".
+ */
+export interface Plant {
+  id: number;
+  slug: string;
+  commonName: string;
+  scientificName: string;
+  description?: string | null;
+  plantType?: ('tree' | 'shrub' | 'perennial' | 'grass' | 'fern' | 'vine' | 'annual') | null;
+  hardinessZoneMin?: number | null;
+  hardinessZoneMax?: number | null;
+  heightInFeetMin?: number | null;
+  heightInFeetMax?: number | null;
+  sunRequirement?: ('full-sun' | 'part-shade' | 'full-shade') | null;
+  moistureRequirement?: ('dry' | 'medium' | 'wet' | 'adaptable') | null;
+  nativeRegions?:
+    | ('northeast' | 'southeast' | 'midwest' | 'great-plains' | 'southwest' | 'northwest' | 'mountain-west')[]
+    | null;
+  wildlifeValue?: ('caterpillar-host' | 'pollinator-plant' | 'bird-food' | 'nesting-material' | 'cover')[] | null;
+  photos?:
+    | {
+        url: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "posts".
+ */
+export interface Post {
+  id: number;
+  slug: string;
+  title: string;
+  excerpt?: string | null;
+  body: string;
+  publishedAt?: string | null;
+  coverImage?: (number | null) | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "zip-regions".
+ */
+export interface ZipRegion {
+  id: number;
+  zip: string;
+  state: string;
+  ecoregions?:
+    | {
+        code: string;
+        id?: string | null;
+      }[]
+    | null;
+  hardinessZone?: number | null;
+  lat?: number | null;
+  lng?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -190,6 +294,22 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: number | Media;
+      } | null)
+    | ({
+        relationTo: 'nurseries';
+        value: number | Nursery;
+      } | null)
+    | ({
+        relationTo: 'plants';
+        value: number | Plant;
+      } | null)
+    | ({
+        relationTo: 'posts';
+        value: number | Post;
+      } | null)
+    | ({
+        relationTo: 'zip-regions';
+        value: number | ZipRegion;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -270,6 +390,94 @@ export interface MediaSelect<T extends boolean = true> {
   filesize?: T;
   width?: T;
   height?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "nurseries_select".
+ */
+export interface NurseriesSelect<T extends boolean = true> {
+  slug?: T;
+  name?: T;
+  description?: T;
+  address?: T;
+  city?: T;
+  state?: T;
+  zip?: T;
+  website?: T;
+  phone?: T;
+  isNativeOnly?: T;
+  specialties?: T;
+  photos?:
+    | T
+    | {
+        url?: T;
+        id?: T;
+      };
+  lat?: T;
+  lng?: T;
+  verified?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "plants_select".
+ */
+export interface PlantsSelect<T extends boolean = true> {
+  slug?: T;
+  commonName?: T;
+  scientificName?: T;
+  description?: T;
+  plantType?: T;
+  hardinessZoneMin?: T;
+  hardinessZoneMax?: T;
+  heightInFeetMin?: T;
+  heightInFeetMax?: T;
+  sunRequirement?: T;
+  moistureRequirement?: T;
+  nativeRegions?: T;
+  wildlifeValue?: T;
+  photos?:
+    | T
+    | {
+        url?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "posts_select".
+ */
+export interface PostsSelect<T extends boolean = true> {
+  slug?: T;
+  title?: T;
+  excerpt?: T;
+  body?: T;
+  publishedAt?: T;
+  coverImage?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "zip-regions_select".
+ */
+export interface ZipRegionsSelect<T extends boolean = true> {
+  zip?: T;
+  state?: T;
+  ecoregions?:
+    | T
+    | {
+        code?: T;
+        id?: T;
+      };
+  hardinessZone?: T;
+  lat?: T;
+  lng?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
