@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ZipSearchForm } from "@/components/ZipSearchForm";
 
 export default function HomePage() {
@@ -18,9 +19,9 @@ export default function HomePage() {
 
         <p className="text-sm text-[#6b5b5d]">
           Or{" "}
-          <a href="/nurseries" className="underline decoration-[#DDFC74] decoration-2 underline-offset-2 hover:text-[#3D0C11] transition-colors">
+          <Link href="/nurseries" className="underline decoration-[#DDFC74] decoration-2 underline-offset-2 hover:text-[#3D0C11] transition-colors">
             browse all nurseries
-          </a>
+          </Link>
         </p>
       </div>
     </div>

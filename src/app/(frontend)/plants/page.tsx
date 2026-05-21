@@ -1,5 +1,6 @@
 import { Suspense } from 'react'
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { PlantDirectoryFilters } from '@/components/PlantDirectoryFilters'
 import { PlantCard } from '@/components/PlantCard'
 import { getPlants } from '@/lib/plants'
@@ -102,12 +103,12 @@ function EmptyState({ hasFilters }: { hasFilters: boolean }) {
           : 'Plant data is being added. Check back soon.'}
       </p>
       {hasFilters && (
-        <a
+        <Link
           href="/plants"
           className="inline-block mt-2 text-sm text-[#BF6900] underline hover:text-[#CC5500] transition-colors"
         >
           Clear filters and browse all
-        </a>
+        </Link>
       )}
     </div>
   )

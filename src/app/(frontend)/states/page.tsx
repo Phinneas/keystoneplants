@@ -74,12 +74,12 @@ export default function StatesIndexPage() {
       <div className="border-t border-[#e8f5d8] pt-6">
         <p className="text-sm text-[#6b5b5d]">
           More states coming soon. In the meantime,{" "}
-          <a
+          <Link
             href="/nurseries"
             className="text-[#3D0C11] font-medium underline decoration-[#DDFC74] underline-offset-2 hover:decoration-2"
           >
             search by zip code
-          </a>{" "}
+          </Link>{" "}
           to find nurseries anywhere.
         </p>
       </div>

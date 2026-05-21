@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { NurseryCard } from "@/components/NurseryCard";
 import { getNurseriesByState } from "@/lib/nurseries";
 
@@ -120,9 +121,9 @@ export default async function StatePage({ params }: StatePageProps) {
       <div className="border-t border-[#e8f5d8] pt-8">
         <p className="text-sm text-[#6b5b5d]">
           Looking for nurseries near a specific location?{" "}
-          <a href="/nurseries" className="text-[#3D0C11] font-medium underline decoration-[#DDFC74] underline-offset-2 hover:decoration-2">
+          <Link href="/nurseries" className="text-[#3D0C11] font-medium underline decoration-[#DDFC74] underline-offset-2 hover:decoration-2">
             Search by zip code →
-          </a>
+          </Link>
         </p>
       </div>
     </div>
