@@ -1,5 +1,5 @@
 {
-  "name": "keystoneplants",
+  "name": "keystonenurseries",
   "version": "1.0.0",
   "description": "A blank template to get started with Payload 3.0",
   "license": "MIT",
@@ -24,7 +24,8 @@
     "test:e2e": "cross-env NODE_OPTIONS=\"--no-deprecation --import=tsx/esm\" playwright test --config=playwright.config.ts",
     "test:int": "cross-env NODE_OPTIONS=--no-deprecation vitest run --config ./vitest.config.mts",
     "seed": "cross-env NODE_OPTIONS=--no-deprecation tsx src/seed.ts",
-    "seed:remote": "cross-env NODE_ENV=production NODE_OPTIONS=--no-deprecation REMOTE_BINDINGS=true tsx src/seed.ts"
+    "seed:remote": "cross-env NODE_ENV=production NODE_OPTIONS=--no-deprecation REMOTE_BINDINGS=true tsx src/seed.ts",
+    "reset-password": "cross-env NODE_ENV=production NODE_OPTIONS=--no-deprecation REMOTE_BINDINGS=true tsx src/reset-password.ts"
   },
   "dependencies": {
     "@opennextjs/cloudflare": "^1.11.0",

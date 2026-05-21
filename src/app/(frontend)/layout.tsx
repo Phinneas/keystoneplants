@@ -11,7 +11,7 @@ const notoSans = Noto_Sans({
 })
 
 export const metadata: Metadata = {
-  title: { default: 'Keystone Plants Directory', template: '%s | Keystone Plants' },
+  title: { default: 'Keystone Nurseries', template: '%s | Keystone Nurseries' },
   description: 'Find native plant nurseries near you. Discover native plants across America.',
 }
 
@@ -25,7 +25,7 @@ export default function FrontendLayout({ children }: { children: React.ReactNode
               href="/"
               className="text-xl font-bold tracking-tight text-[#3D0C11] font-[var(--font-figtree)]"
             >
-              Keystone Plants
+              Keystone Nurseries
             </Link>
             <div className="flex gap-6 text-sm text-[#6b5b5d]">
               <Link href="/nurseries" className="hover:text-[#3D0C11] transition-colors">
@@ -51,7 +51,7 @@ export default function FrontendLayout({ children }: { children: React.ReactNode
           style={{ background: 'linear-gradient(135deg, #3D0C11 0%, #2d5016 100%)' }}
         >
           <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="font-bold text-base font-[var(--font-figtree)]">Keystone Plants</p>
+            <p className="font-bold text-base font-[var(--font-figtree)]">Keystone Nurseries</p>
             <p className="text-[#a8d18a]">
               Nursery data sourced from public records and community submissions.
             </p>

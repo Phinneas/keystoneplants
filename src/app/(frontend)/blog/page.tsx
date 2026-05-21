@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic'
 export const metadata: Metadata = {
   title: 'Blog',
   description:
-    'Guides, species spotlights, and conservation stories from the Keystone Plants community.',
+    'Guides, species spotlights, and conservation stories from the Keystone Nurseries community.',
 }
 
 export default async function BlogPage() {
