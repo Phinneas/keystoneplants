@@ -37,6 +37,66 @@ const STATE_META: Record<string, { name: string; blurb: string; ecoregions: stri
       "Illinois was once dominated by tallgrass prairie — one of the most biodiverse ecosystems in North America. Today less than 0.01% of native prairie remains, making native plant restoration especially urgent. Oak savannas, floodplain forests, and prairie pockets all depend on locally sourced native plants.",
     ecoregions: "Central Corn Belt Plains · Huron/Erie Lake Plains · Southern Illinois Plains and Hills",
   },
+  CA: {
+    name: "California",
+    blurb:
+      "California contains more native plant species than any other state — a product of its extraordinary range of climates, from coastal redwood forests and Central Valley grasslands to Sierra Nevada montane forests and southern chaparral. Local provenance matters enormously here: a plant native to the Bay Area may not be appropriate for San Diego, and vice versa.",
+    ecoregions: "California Floristic Province · Sierra Nevada · Central California Valley · Southern California Mountains",
+  },
+  TX: {
+    name: "Texas",
+    blurb:
+      "Texas is the most ecologically diverse state in the contiguous US, spanning the Piney Woods of East Texas, the Blackland Prairies of the east-central region, the Edwards Plateau Hill Country, the Trans-Pecos desert, and the Gulf Coastal Plain. Each of these regions has its own keystone native plant community — and plants sourced from one region are often poorly adapted to another.",
+    ecoregions: "Texas Blackland Prairies · Edwards Plateau · Cross Timbers · East Texas Piney Woods",
+  },
+  WA: {
+    name: "Washington",
+    blurb:
+      "The Cascades divide Washington into two ecologically distinct halves. West of the mountains, the Puget Lowland and Coast Range support dense Douglas-fir and western red cedar forests with a rich understory of native ferns and shrubs. East of the Cascades, the Columbia Plateau and Blue Mountains host drought-adapted bunchgrass prairie, ponderosa pine forests, and riparian corridors defined by native willow and alder.",
+    ecoregions: "Puget Lowland · North Cascades · Columbia Plateau · Blue Mountains",
+  },
+  OR: {
+    name: "Oregon",
+    blurb:
+      "Oregon's native plant communities reflect some of the sharpest ecological gradients in North America. The Willamette Valley — once a mosaic of prairie, oak savanna, and wetlands — is now one of the most altered landscapes in the Pacific Northwest and a priority for native plant restoration. The Cascades, Coast Range, and high desert of eastern Oregon each support distinct keystone species.",
+    ecoregions: "Willamette Valley · Coast Range · Cascades · Eastern Cascades Slopes",
+  },
+  CO: {
+    name: "Colorado",
+    blurb:
+      "Colorado's native plant communities range from shortgrass prairie on the eastern plains to montane meadows and subalpine forest in the Rockies. The Southern Rockies harbor some of the highest-elevation native plant diversity in North America, while the Colorado Plateau in the west supports drought-adapted shrublands and pinyon-juniper woodlands.",
+    ecoregions: "Southern Rockies · Colorado Plateau · High Plains · Wyoming Basin",
+  },
+  NC: {
+    name: "North Carolina",
+    blurb:
+      "North Carolina stretches from the Outer Banks barrier islands through the Piedmont to the southern Appalachians — one of the most botanically diverse regions in the eastern US. The Blue Ridge Escarpment is a global biodiversity hotspot, and the longleaf pine savannas of the Coastal Plain host dozens of rare native species found nowhere else.",
+    ecoregions: "Blue Ridge Mountains · Piedmont · Southeastern Plains · Southern Coastal Plain",
+  },
+  GA: {
+    name: "Georgia",
+    blurb:
+      "Georgia spans five distinct physiographic regions, from the Blue Ridge mountains in the north to the coastal barrier islands and longleaf pine flatwoods of the south. The Piedmont red clay hills and the Fall Line sandhills in between each support distinct native plant communities that have been severely reduced by development and agriculture.",
+    ecoregions: "Blue Ridge · Piedmont · Southeastern Plains · Southern Coastal Plain",
+  },
+  MN: {
+    name: "Minnesota",
+    blurb:
+      "Minnesota sits at the convergence of three major North American biomes: the eastern deciduous forest, the tallgrass prairie, and the boreal forest. The Boundary Waters region in the northeast is true boreal taiga — spruce, birch, and aspen over a carpet of Vaccinium and Labrador tea. The western prairie region was once dominated by big bluestem and prairie forbs that stretched to the horizon.",
+    ecoregions: "Northern Lakes and Forests · Central Corn Belt Plains · Northern Minnesota Wetlands",
+  },
+  WI: {
+    name: "Wisconsin",
+    blurb:
+      "Wisconsin's landscape is shaped by glacial history: the Driftless Area in the southwest escaped glaciation entirely, preserving ancient plant communities on steep coulees and bluffs, while the northern lake district supports a boreal forest transition zone. The state once had 2.1 million acres of native prairie; less than 12,000 remain, making prairie restoration one of the most urgent native plant priorities in the Midwest.",
+    ecoregions: "Northern Lakes and Forests · Driftless Area · Southeastern Wisconsin Till Plains",
+  },
+  VA: {
+    name: "Virginia",
+    blurb:
+      "Virginia's geography mirrors the full sweep of the central Appalachian system — from the barrier islands and tidal marshes of the Chesapeake coast, through the Piedmont clay hills, to the Ridge and Valley Appalachians and the high peaks of Shenandoah. Each region supports distinct native plant communities, and locally sourced stock performs measurably better than plants grown from out-of-region seed.",
+    ecoregions: "Piedmont · Blue Ridge Mountains · Ridge and Valley · Coastal Plain",
+  },
 };
 
 interface StatePageProps {

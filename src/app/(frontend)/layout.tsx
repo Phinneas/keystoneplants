@@ -37,6 +37,9 @@ export default function FrontendLayout({ children }: { children: React.ReactNode
               <Link href="/ecoregions" className="hover:text-[#3D0C11] transition-colors">
                 Ecoregions
               </Link>
+              <Link href="/quiz" className="hover:text-[#3D0C11] transition-colors">
+                Plant Quiz
+              </Link>
               <Link href="/states" className="hover:text-[#3D0C11] transition-colors">
                 By State
               </Link>

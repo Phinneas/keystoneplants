@@ -9,6 +9,21 @@ export const metadata: Metadata = {
 
 const STATES = [
   {
+    code: "CA",
+    name: "California",
+    tagline: "California Floristic Province · Sierra Nevada · Coastal redwoods · Chaparral",
+  },
+  {
+    code: "CO",
+    name: "Colorado",
+    tagline: "Southern Rockies · Colorado Plateau · Shortgrass prairie · Montane meadows",
+  },
+  {
+    code: "GA",
+    name: "Georgia",
+    tagline: "Blue Ridge · Piedmont red clay hills · Longleaf pine flatwoods",
+  },
+  {
     code: "IL",
     name: "Illinois",
     tagline: "Tallgrass prairie restoration · Oak savannas · Floodplain forests",
@@ -17,6 +32,16 @@ const STATES = [
     code: "MI",
     name: "Michigan",
     tagline: "Great Lakes shoreline · Northern boreal forest · Prairie remnants",
+  },
+  {
+    code: "MN",
+    name: "Minnesota",
+    tagline: "Boundary Waters boreal · Tallgrass prairie · Northern lake district",
+  },
+  {
+    code: "NC",
+    name: "North Carolina",
+    tagline: "Blue Ridge Escarpment · Piedmont · Longleaf pine savannas",
   },
   {
     code: "NY",
@@ -29,9 +54,34 @@ const STATES = [
     tagline: "Erie lakeshore · Till plains · Unglaciated hill country",
   },
   {
+    code: "OR",
+    name: "Oregon",
+    tagline: "Willamette Valley · Coast Range · Cascades · Columbia Plateau",
+  },
+  {
     code: "PA",
     name: "Pennsylvania",
     tagline: "Ridge and Valley Appalachians · Piedmont · Allegheny Plateau",
+  },
+  {
+    code: "TX",
+    name: "Texas",
+    tagline: "Blackland Prairie · Edwards Plateau Hill Country · Piney Woods · Gulf Coast",
+  },
+  {
+    code: "VA",
+    name: "Virginia",
+    tagline: "Shenandoah · Piedmont · Blue Ridge · Chesapeake coastal plain",
+  },
+  {
+    code: "WA",
+    name: "Washington",
+    tagline: "Puget Lowland · North Cascades · Columbia Plateau · Blue Mountains",
+  },
+  {
+    code: "WI",
+    name: "Wisconsin",
+    tagline: "Driftless Area · Northern lake district · Native prairie remnants",
   },
 ];
 
@@ -73,14 +123,14 @@ export default function StatesIndexPage() {
 
       <div className="border-t border-[#e8f5d8] pt-6">
         <p className="text-sm text-[#6b5b5d]">
-          More states coming soon. In the meantime,{" "}
+          More states being added regularly. Can&rsquo;t find yours?{" "}
           <Link
             href="/nurseries"
             className="text-[#3D0C11] font-medium underline decoration-[#DDFC74] underline-offset-2 hover:decoration-2"
           >
-            search by zip code
+            Search by zip code
           </Link>{" "}
-          to find nurseries anywhere.
+          to find nurseries anywhere in the US.
         </p>
       </div>
     </div>
