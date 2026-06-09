@@ -43,6 +43,9 @@ export default function FrontendLayout({ children }: { children: React.ReactNode
               <Link href="/states" className="hover:text-[#3D0C11] transition-colors">
                 By State
               </Link>
+              <Link href="/canada" className="hover:text-[#3D0C11] transition-colors">
+                Canada
+              </Link>
               <Link href="/blog" className="hover:text-[#3D0C11] transition-colors">
                 Blog
               </Link>
