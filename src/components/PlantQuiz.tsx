@@ -189,7 +189,7 @@ export function PlantQuiz() {
       try {
         const params = new URLSearchParams({ nativeRegion: group.nativeRegion, sun, wildlife })
         const res = await fetch(`/api/quiz-plants?${params}`)
-        const data = await res.json()
+        const data = (await res.json()) as ParsedPlant[]
         setPlants(data)
       } finally {
         setLoading(false)
