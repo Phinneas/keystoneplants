@@ -2,6 +2,8 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { getPlantBySlug } from '@/lib/plants'
 
+export const dynamic = 'force-dynamic'
+
 const SUN_LABELS: Record<string, string> = {
   'full-sun': 'Full sun',
   'part-shade': 'Part shade',

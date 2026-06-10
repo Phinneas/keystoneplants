@@ -4,6 +4,8 @@ import Link from "next/link";
 import { getPostBySlug } from "@/lib/posts";
 import { convertLexicalToHTML } from "@payloadcms/richtext-lexical/html";
 
+export const dynamic = 'force-dynamic'
+
 interface PostPageProps {
   params: Promise<{ slug: string }>;
 }

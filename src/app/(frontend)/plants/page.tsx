@@ -6,6 +6,8 @@ import { PlantCard } from '@/components/PlantCard'
 import { getPlants } from '@/lib/plants'
 import { getEcoregionByCode } from '@/lib/ecoregions'
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'Native Plant Directory',
   description: 'Browse native plants by ecoregion, wildlife value, and growing conditions.',

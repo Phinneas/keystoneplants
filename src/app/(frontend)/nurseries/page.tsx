@@ -4,6 +4,8 @@ import { NurseryCard } from '@/components/NurseryCard'
 import { getRegionsForZip, isValidZip } from '@/lib/regions'
 import { getNurseriesNearZip } from '@/lib/nurseries'
 
+export const dynamic = 'force-dynamic'
+
 interface NurserySearchPageProps {
   searchParams: Promise<{
     zip?: string

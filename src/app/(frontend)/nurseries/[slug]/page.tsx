@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getNurseryBySlug } from "@/lib/nurseries";
 
+export const dynamic = 'force-dynamic'
+
 interface NurseryPageProps {
   params: Promise<{ slug: string }>;
 }

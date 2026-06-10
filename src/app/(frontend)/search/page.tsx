@@ -6,6 +6,8 @@ import { PlantCard } from '@/components/PlantCard'
 import { getRegionsForZip, isValidZip } from '@/lib/regions'
 import { getPlants } from '@/lib/plants'
 
+export const dynamic = 'force-dynamic'
+
 interface SearchPageProps {
   searchParams: Promise<{
     zip?: string

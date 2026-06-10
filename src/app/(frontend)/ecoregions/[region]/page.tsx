@@ -3,18 +3,12 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { PlantCard } from '@/components/PlantCard'
 import { getPlants } from '@/lib/plants'
-import {
-  ECOREGION_GROUP_META,
-  getGroupBySlug,
-  getEcoregionsByGroup,
-} from '@/lib/ecoregions'
+import { getGroupBySlug, getEcoregionsByGroup } from '@/lib/ecoregions'
+
+export const dynamic = 'force-dynamic'
 
 interface RegionPageProps {
   params: Promise<{ region: string }>
-}
-
-export async function generateStaticParams() {
-  return ECOREGION_GROUP_META.map((g) => ({ region: g.slug }))
 }
 
 export async function generateMetadata({ params }: RegionPageProps): Promise<Metadata> {
