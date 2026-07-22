@@ -2,16 +2,65 @@
 @plugin "@tailwindcss/typography";
 
 :root {
-  --background: #ffffff;
-  --foreground: #3D0C11;
-  --muted: #f8fef3;
+  --background: #fffdf7;
+  --surface: #ffffff;
+  --surface-soft: #f8fef3;
+  --foreground: #3d0c11;
   --muted-foreground: #6b5b5d;
   --border: #e8f5d8;
-  --primary: #3D0C11;
+  --primary: #3d0c11;
   --primary-foreground: #ffffff;
-  --accent: #DDFC74;
-  --accent-foreground: #3D0C11;
-  --secondary: #D3F9B5;
+  --accent: #ddfc74;
+  --accent-foreground: #3d0c11;
+  --secondary: #d3f9b5;
+  --season-glow: rgba(221, 252, 116, 0.34);
+  --season-ink: #4c7728;
+  --night-sky: #10212c;
+}
+
+html[data-season="spring"] {
+  --accent: #ddfc74;
+  --secondary: #d3f9b5;
+  --season-glow: rgba(221, 252, 116, 0.38);
+  --season-ink: #4c7728;
+}
+
+html[data-season="summer"] {
+  --accent: #f6c85f;
+  --secondary: #d6ef8d;
+  --season-glow: rgba(246, 200, 95, 0.32);
+  --season-ink: #4d6e2f;
+}
+
+html[data-season="autumn"] {
+  --accent: #f5aa6b;
+  --secondary: #f9ddb0;
+  --season-glow: rgba(245, 170, 107, 0.31);
+  --season-ink: #8e4e26;
+}
+
+html[data-season="winter"] {
+  --accent: #abc9ee;
+  --secondary: #dcebf5;
+  --season-glow: rgba(171, 201, 238, 0.34);
+  --season-ink: #426178;
+}
+
+html[data-theme="night"] {
+  --background: #101b1e;
+  --surface: #18272a;
+  --surface-soft: #1b3131;
+  --foreground: #f6f3e7;
+  --muted-foreground: #c4cabb;
+  --border: #385252;
+  --primary: #f6f3e7;
+  --primary-foreground: #122022;
+  --accent: #d9e98a;
+  --accent-foreground: #142227;
+  --secondary: #253d3d;
+  --season-glow: rgba(207, 228, 124, 0.16);
+  --season-ink: #d9e98a;
+  --night-sky: #061219;
 }
 
 @theme inline {
@@ -21,8 +70,23 @@
   --font-heading: var(--font-figtree);
 }
 
+html {
+  background: var(--background);
+  transition: background-color 380ms ease, color 380ms ease;
+}
+
 body {
+  min-height: 100%;
   color: var(--foreground);
+  background:
+    radial-gradient(circle at 18% 2%, var(--season-glow), transparent 23rem),
+    var(--background);
+  transition: background-color 380ms ease, color 380ms ease;
+}
+
+::selection {
+  color: var(--accent-foreground);
+  background: var(--accent);
 }
 
 .prose p {
@@ -50,7 +114,386 @@ body {
   margin-bottom: 1.5em;
 }
 
-.prose ol, .prose ul {
+.prose ol,
+.prose ul {
   margin-top: 1em;
   margin-bottom: 1em;
+}
+
+.living-shell,
+.living-header,
+.living-footer,
+.living-surface,
+.living-surface-soft,
+.living-copy-muted,
+.living-theme-toggle {
+  transition:
+    background-color 380ms ease,
+    border-color 380ms ease,
+    color 380ms ease,
+    box-shadow 380ms ease;
+}
+
+.living-shell {
+  background: transparent;
+  color: var(--foreground);
+}
+
+.living-header {
+  background: color-mix(in srgb, var(--background) 86%, transparent);
+  border-color: var(--border);
+  backdrop-filter: blur(12px);
+}
+
+.living-footer {
+  background: linear-gradient(135deg, var(--night-sky) 0%, #2d5016 100%);
+}
+
+.living-surface {
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+.living-surface-soft {
+  background: var(--surface-soft);
+}
+
+.living-copy-muted {
+  color: var(--muted-foreground);
+}
+
+.living-accent-underline {
+  text-decoration-color: var(--accent);
+}
+
+.living-season-chip {
+  color: var(--season-ink);
+  background: color-mix(in srgb, var(--accent) 19%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 55%, var(--border));
+}
+
+.root-system-scroll {
+  position: fixed;
+  z-index: 0;
+  top: 6rem;
+  bottom: 0;
+  left: max(0.75rem, calc((100vw - 84rem) / 2 - 7.5rem));
+  width: 7rem;
+  pointer-events: none;
+  opacity: 0.48;
+  mix-blend-mode: multiply;
+}
+
+html[data-theme="night"] .root-system-scroll {
+  opacity: 0.36;
+  mix-blend-mode: screen;
+}
+
+.root-system-scroll svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.root-system-scroll path {
+  fill: none;
+  stroke: url(#root-gradient);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.25;
+  transition: stroke-dashoffset 110ms linear;
+}
+
+.root-system-node {
+  fill: var(--accent);
+  stroke: var(--season-ink);
+  stroke-width: 2;
+}
+
+@media (max-width: 1279px) {
+  .root-system-scroll {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.pollinator-field {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.pollinator-follower {
+  position: absolute;
+  left: var(--pollinator-x, -4rem);
+  top: var(--pollinator-y, -4rem);
+  width: 2.75rem;
+  height: 2.35rem;
+  opacity: 0;
+  transform: translate3d(-50%, -50%, 0) scale(0.72) rotate(-8deg);
+  transform-origin: center;
+  transition: opacity 280ms ease, transform 350ms cubic-bezier(.2,.85,.3,1.2);
+}
+
+.pollinator-field.is-observing .pollinator-follower {
+  opacity: 0.94;
+  transform: translate3d(-50%, -50%, 0) scale(1) rotate(0deg);
+}
+
+.pollinator {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.pollinator-day {
+  color: #2e2619;
+}
+
+.pollinator-wing {
+  fill: color-mix(in srgb, var(--accent) 70%, white);
+  stroke: currentColor;
+  stroke-width: 1.3;
+  transform-origin: 24px 20px;
+  animation: pollinator-wingbeat 180ms ease-in-out infinite alternate;
+}
+
+.pollinator-body {
+  fill: #3d0c11;
+}
+
+.pollinator-stripe {
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.pollinator-antenna {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.25;
+  stroke-linecap: round;
+}
+
+.pollinator-night {
+  display: none;
+  color: #d9e98a;
+}
+
+.pollinator-moth-wing {
+  fill: color-mix(in srgb, var(--accent) 65%, #6b82bc);
+  stroke: currentColor;
+  stroke-width: 1.1;
+  transform-origin: 26px 20px;
+  animation: moth-wingbeat 520ms ease-in-out infinite alternate;
+}
+
+.pollinator-moth-body {
+  fill: #d9e98a;
+}
+
+.pollinator-firefly {
+  position: absolute;
+  width: 0.25rem;
+  height: 0.25rem;
+  border-radius: 999px;
+  background: #f7f5b0;
+  box-shadow: 0 0 0.45rem #f7f5b0, 0 0 1.1rem #d9e98a;
+  opacity: 0;
+}
+
+.pollinator-firefly-one {
+  left: -0.8rem;
+  top: 0.2rem;
+}
+
+.pollinator-firefly-two {
+  right: -0.4rem;
+  bottom: 0.1rem;
+}
+
+html[data-theme="night"] .pollinator-day {
+  display: none;
+}
+
+html[data-theme="night"] .pollinator-night {
+  display: block;
+}
+
+html[data-theme="night"] .pollinator-firefly {
+  animation: firefly-glow 1.7s ease-in-out infinite alternate;
+}
+
+.nursery-card {
+  isolation: isolate;
+  transition: transform 260ms ease, box-shadow 260ms ease, border-color 260ms ease;
+}
+
+.nursery-card:hover,
+.nursery-card:focus-within {
+  transform: translateY(-0.25rem);
+  box-shadow: 0 1.05rem 2.4rem color-mix(in srgb, var(--season-ink) 16%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 62%, var(--border));
+}
+
+.nursery-card-growth {
+  position: absolute;
+  z-index: -1;
+  right: -0.9rem;
+  bottom: -0.78rem;
+  width: 5.2rem;
+  height: 4.25rem;
+  color: var(--season-ink);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(0.8rem) rotate(8deg) scale(0.72);
+  transform-origin: 80% 100%;
+  transition: opacity 280ms ease, transform 380ms cubic-bezier(.2,.8,.25,1.2);
+}
+
+.nursery-card:hover .nursery-card-growth,
+.nursery-card:focus-within .nursery-card-growth {
+  opacity: 0.92;
+  transform: translateY(0) rotate(0deg) scale(1);
+}
+
+.nursery-card-growth path {
+  fill: color-mix(in srgb, var(--secondary) 72%, var(--accent));
+  stroke: currentColor;
+  stroke-width: 1.35;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.nursery-card:hover .nursery-card-growth path:nth-child(2),
+.nursery-card:focus-within .nursery-card-growth path:nth-child(2) {
+  animation: leaf-wiggle 900ms ease-in-out 200ms infinite alternate;
+}
+
+@keyframes pollinator-wingbeat {
+  from { transform: rotate(-12deg) scaleY(0.86); }
+  to { transform: rotate(12deg) scaleY(1.04); }
+}
+
+@keyframes moth-wingbeat {
+  from { transform: scaleX(0.86) rotate(-3deg); }
+  to { transform: scaleX(1.07) rotate(3deg); }
+}
+
+@keyframes firefly-glow {
+  from { opacity: 0.2; transform: translateY(0); }
+  to { opacity: 0.95; transform: translateY(-0.3rem); }
+}
+
+@keyframes leaf-wiggle {
+  from { transform: rotate(-3deg); }
+  to { transform: rotate(5deg); }
+}
+
+.seed-dispersal {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.seed-particle {
+  position: fixed;
+  left: var(--seed-origin-x, 50vw);
+  top: var(--seed-origin-y, 50vh);
+  display: block;
+  width: 1.25rem;
+  height: 1.25rem;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.5);
+  will-change: transform, opacity;
+}
+
+.seed-dispersal.is-dispersing .seed-particle {
+  animation: seed-drift var(--seed-duration) cubic-bezier(.12,.77,.21,1) var(--seed-delay) both;
+}
+
+.seed-fluff {
+  position: absolute;
+  inset: 0.02rem 0.02rem 0.38rem;
+  border-radius: 55% 45% 55% 45%;
+  background:
+    repeating-linear-gradient(72deg, transparent 0 2px, color-mix(in srgb, var(--surface) 84%, white) 2px 3px, transparent 3px 5px),
+    radial-gradient(circle at 50% 68%, color-mix(in srgb, var(--accent) 58%, white), transparent 67%);
+  filter: drop-shadow(0 0 0.18rem color-mix(in srgb, var(--accent) 55%, transparent));
+}
+
+.seed-kernel {
+  position: absolute;
+  left: 50%;
+  bottom: 0.06rem;
+  width: 0.22rem;
+  height: 0.43rem;
+  border-radius: 60% 60% 80% 80%;
+  background: var(--season-ink);
+  transform: translateX(-50%) rotate(var(--seed-rotation));
+}
+
+@keyframes seed-drift {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(0deg) scale(0.35);
+  }
+  18% {
+    opacity: 0.92;
+  }
+  72% {
+    opacity: 0.78;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(
+      calc(-50% + var(--seed-drift-x)),
+      calc(-50% + var(--seed-drift-y))
+    ) rotate(calc(var(--seed-rotation) + 210deg)) scale(var(--seed-scale));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pollinator-field,
+  .seed-dispersal {
+    display: none;
+  }
+}
+
+/* Keep legacy hard-coded Tailwind utilities readable in night mode while the
+   rest of the app is gradually migrated to the living design tokens. */
+html[data-theme="night"] [class*="text-[#3D0C11]"] {
+  color: var(--primary) !important;
+}
+
+html[data-theme="night"] [class*="text-[#6b5b5d]"] {
+  color: var(--muted-foreground) !important;
+}
+
+html[data-theme="night"] [class*="bg-white"] {
+  background-color: var(--surface) !important;
+}
+
+html[data-theme="night"] [class*="bg-[#f8fef3]"] {
+  background-color: var(--surface-soft) !important;
+}
+
+html[data-theme="night"] [class*="border-[#e8f5d8]"] {
+  border-color: var(--border) !important;
 }
