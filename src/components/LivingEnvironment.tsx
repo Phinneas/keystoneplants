@@ -68,7 +68,7 @@ export function NightModeToggle(): ReactElement {
       aria-pressed={isNight}
       aria-label={isNight ? "Switch to daylight theme" : "Switch to night theme"}
       title={isNight ? "Switch to daylight theme" : "Switch to night theme"}
-      className="living-theme-toggle relative inline-flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full border border-[var(--border)] bg-[var(--surface)] text-[var(--primary)] shadow-sm transition-transform duration-300 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
+      className="field-theme-toggle relative inline-flex shrink-0 items-center justify-center overflow-hidden transition-transform duration-300 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--kn-ochre)]"
     >
       <span className="sr-only">{isNight ? "Daylight theme enabled" : "Night theme enabled"}</span>
       {isNight ? (

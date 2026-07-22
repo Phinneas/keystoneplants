@@ -313,10 +313,6 @@ interface StatePageProps {
   params: Promise<{ state: string }>;
 }
 
-export async function generateStaticParams() {
-  return Object.keys(STATE_META).map((state) => ({ state: state.toLowerCase() }));
-}
-
 export async function generateMetadata({ params }: StatePageProps): Promise<Metadata> {
   const { state } = await params;
   const meta = STATE_META[state.toUpperCase()];
