@@ -35,3 +35,11 @@ Because the current local data set does not provide a searchable sample ZIP, the
 ## Public review link
 
 The exposed review URL was tested from the public proxy. It initially displays the supplied leaf-wipe transition, then settles into the completed high-fidelity hero, navigation, ZIP-search panel, typography, and botanical artwork. The preview is ready for user review before replacing the existing production deployment.
+
+## Production verification — 2026-07-22
+
+The approved Motion Lab redesign was deployed successfully to `https://keystonenurseries.buzzuw2.workers.dev`. A live browser review confirmed that the route-enter animation completes, the generated native-meadow hero image loads correctly, the field-guide navigation and theme control render, and the ZIP search module is visible and usable on the permanent production homepage.
+
+The initial navigation screenshot captured the route-enter overlay before it settled; a subsequent rendered check confirmed the intended cinematic meadow hero, typography, button treatment, and field-guide search composition are present in production.
+
+Deployment version: `742af446-9b67-487d-a501-13054bacdb2d`.
