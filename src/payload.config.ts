@@ -44,8 +44,9 @@ const cloudflareLogger = {
   silent: () => {},
 } as any // Use PayloadLogger type when it's exported
 
-const cloudflare =
-  isCLI || !isProduction || isProductionBuild || forceWranglerProxy
+const cloudflare = isProductionBuild
+  ? ({ env: {} } as CloudflareContext)
+  : isCLI || !isProduction || forceWranglerProxy
     ? await getCloudflareContextFromWrangler()
     : await getCloudflareContext({ async: true })
 
