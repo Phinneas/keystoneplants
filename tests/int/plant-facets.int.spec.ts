@@ -37,6 +37,12 @@ describe('filter vocabulary parity', () => {
     expect(drifted).toEqual([])
   })
 
+  it('every nativeRegions option is reachable from some ecoregion group', () => {
+    const mapped = new Set(ECOREGION_GROUP_META.map((g) => g.nativeRegion))
+    const unreachable = selectOptions('nativeRegions').filter((o) => !mapped.has(o))
+    expect(unreachable).toEqual([])
+  })
+
   it('every ecoregion belongs to a group that maps to a region', () => {
     const groupNames = new Set(ECOREGION_GROUP_META.map((g) => g.name))
     const orphans = ECOREGIONS.filter((e) => !groupNames.has(e.region)).map(

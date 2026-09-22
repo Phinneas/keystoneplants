@@ -39,4 +39,5 @@ export const TYPE_OPTIONS: FacetOption[] = [
   { value: 'grass', label: 'Grass' },
   { value: 'vine', label: 'Vine' },
   { value: 'fern', label: 'Fern' },
+  { value: 'annual', label: 'Annual' },
 ]

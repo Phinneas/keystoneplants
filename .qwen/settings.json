@@ -18,7 +18,9 @@
       "Bash(probe *)",
       "Bash(git status *)",
       "Bash(ls *)",
-      "Bash(wc *)"
+      "Bash(wc *)",
+      "Bash(awk *)",
+      "Bash(tr *)"
     ]
   },
   "$version": 4
