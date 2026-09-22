@@ -246,7 +246,7 @@ export const ECOREGION_GROUP_META: EcoregionGroup[] = [
   {
     slug: "california",
     name: "California",
-    nativeRegion: "northwest",
+    nativeRegion: "california",
     nwfEcoregion: "Mediterranean California (Ecoregion 11)",
     states: "CA",
     summary:
@@ -294,4 +294,18 @@ export function getEcoregionsByGroup(groupName: string): Ecoregion[] {
 
 export function getEcoregionByCode(code: string): Ecoregion | undefined {
   return ECOREGIONS.find((e) => e.code === code);
+}
+
+/**
+ * Resolve EPA Level III ecoregion codes to the `Plants.nativeRegions` values they
+ * imply. Several filter groups share one region value (Mid-Atlantic maps to
+ * northeast), so the result is deduplicated.
+ */
+export function getNativeRegionsForCodes(codes: string[]): string[] {
+  const regions = new Set<string>();
+  for (const code of codes) {
+    const group = ECOREGION_GROUP_META.find((m) => m.name === getEcoregionByCode(code)?.region);
+    if (group) regions.add(group.nativeRegion);
+  }
+  return [...regions];
 }

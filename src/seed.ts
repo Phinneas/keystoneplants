@@ -124,6 +124,102 @@ async function seed() {
     { zip: '60034', state: 'IL', ecoregions: [{ code: '8.3.1' }], hardinessZone: 5, lat: 42.4764, lng: -88.4372 },
     { zip: '61701', state: 'IL', ecoregions: [{ code: '8.3.1' }], hardinessZone: 5, lat: 40.4842, lng: -88.9937 },
     { zip: '61489', state: 'IL', ecoregions: [{ code: '8.3.1' }], hardinessZone: 5, lat: 40.9259, lng: -90.0390 },
+    // WA (Pacific Northwest)
+    { zip: '98201', state: 'WA', ecoregions: [{ code: '6.2.9' }], hardinessZone: 8, lat: 48.4212, lng: -122.3340 },
+    { zip: '98225', state: 'WA', ecoregions: [{ code: '7.1.7' }], hardinessZone: 8, lat: 48.7514, lng: -122.4781 },
+    { zip: '98366', state: 'WA', ecoregions: [{ code: '7.1.8' }], hardinessZone: 8, lat: 47.5440, lng: -122.6282 },
+    // OR (Pacific Northwest)
+    { zip: '97201', state: 'OR', ecoregions: [{ code: '7.1.9' }], hardinessZone: 8, lat: 45.5051, lng: -122.6750 },
+    { zip: '97401', state: 'OR', ecoregions: [{ code: '6.2.9' }], hardinessZone: 8, lat: 44.0521, lng: -123.0868 },
+    // CA (California)
+    { zip: '94102', state: 'CA', ecoregions: [{ code: '7.1.8' }], hardinessZone: 10, lat: 37.7749, lng: -122.4194 },
+    { zip: '95814', state: 'CA', ecoregions: [{ code: '6.1.2' }], hardinessZone: 9, lat: 38.5816, lng: -121.4944 },
+    { zip: '92101', state: 'CA', ecoregions: [{ code: '6.1.4' }], hardinessZone: 10, lat: 32.7157, lng: -117.1611 },
+    // AZ (Southwest)
+    { zip: '85001', state: 'AZ', ecoregions: [{ code: '10.1.1' }], hardinessZone: 10, lat: 33.4484, lng: -112.0740 },
+    { zip: '85701', state: 'AZ', ecoregions: [{ code: '10.1.2' }], hardinessZone: 9, lat: 32.2226, lng: -110.9747 },
+    // NM (Southwest)
+    { zip: '87101', state: 'NM', ecoregions: [{ code: '10.1.3' }], hardinessZone: 7, lat: 35.0844, lng: -106.6504 },
+    // TX (Great Plains / South)
+    { zip: '73301', state: 'TX', ecoregions: [{ code: '9.6.3' }], hardinessZone: 8, lat: 30.2672, lng: -97.7431 },
+    { zip: '75201', state: 'TX', ecoregions: [{ code: '9.6.2' }], hardinessZone: 8, lat: 32.7876, lng: -96.7985 },
+    { zip: '77001', state: 'TX', ecoregions: [{ code: '9.6.4' }], hardinessZone: 9, lat: 29.7604, lng: -95.3698 },
+    // FL (Southeast)
+    { zip: '33101', state: 'FL', ecoregions: [{ code: '8.5.4' }], hardinessZone: 11, lat: 25.7617, lng: -80.1918 },
+    { zip: '32801', state: 'FL', ecoregions: [{ code: '8.5.3' }], hardinessZone: 9, lat: 28.5383, lng: -81.3792 },
+    // NC (Southeast)
+    { zip: '27601', state: 'NC', ecoregions: [{ code: '8.5.1' }], hardinessZone: 7, lat: 35.7796, lng: -78.6382 },
+    { zip: '28201', state: 'NC', ecoregions: [{ code: '8.5.1' }], hardinessZone: 8, lat: 35.2271, lng: -80.8431 },
+    // SC (Southeast)
+    { zip: '29401', state: 'SC', ecoregions: [{ code: '8.5.3' }], hardinessZone: 9, lat: 32.7765, lng: -79.9311 },
+    // TN (Southeast)
+    { zip: '37201', state: 'TN', ecoregions: [{ code: '8.4.2' }], hardinessZone: 7, lat: 36.1627, lng: -86.7816 },
+    // KY (Southeast)
+    { zip: '40202', state: 'KY', ecoregions: [{ code: '8.4.1' }], hardinessZone: 6, lat: 38.2527, lng: -85.7585 },
+    // IN (Midwest)
+    { zip: '46201', state: 'IN', ecoregions: [{ code: '8.3.1' }], hardinessZone: 6, lat: 39.7684, lng: -86.1581 },
+    // WI (Midwest)
+    { zip: '53201', state: 'WI', ecoregions: [{ code: '9.2.2' }], hardinessZone: 5, lat: 43.0389, lng: -87.9065 },
+    // IA (Midwest)
+    { zip: '50309', state: 'IA', ecoregions: [{ code: '9.2.1' }], hardinessZone: 5, lat: 41.5868, lng: -93.6250 },
+    // MO (Midwest)
+    { zip: '63101', state: 'MO', ecoregions: [{ code: '8.4.2' }], hardinessZone: 6, lat: 38.6270, lng: -90.1994 },
+    // NE (Great Plains)
+    { zip: '68501', state: 'NE', ecoregions: [{ code: '9.5.2' }], hardinessZone: 5, lat: 40.8136, lng: -96.7026 },
+    // KS (Great Plains)
+    { zip: '66601', state: 'KS', ecoregions: [{ code: '9.5.2' }], hardinessZone: 6, lat: 39.0473, lng: -95.6752 },
+    // MT (Rocky Mountains)
+    { zip: '59601', state: 'MT', ecoregions: [{ code: '6.2.15' }], hardinessZone: 4, lat: 46.5884, lng: -112.0245 },
+    // ID (Rocky Mountains)
+    { zip: '83701', state: 'ID', ecoregions: [{ code: '6.2.14' }], hardinessZone: 6, lat: 43.6150, lng: -116.2023 },
+    // CO (Rocky Mountains)
+    { zip: '80302', state: 'CO', ecoregions: [{ code: '6.2.3' }], hardinessZone: 5, lat: 40.0150, lng: -105.2705 },
+    // UT (Rocky Mountains)
+    { zip: '84101', state: 'UT', ecoregions: [{ code: '6.2.2' }], hardinessZone: 7, lat: 40.7608, lng: -111.8910 },
+    // NV (Southwest)
+    { zip: '89101', state: 'NV', ecoregions: [{ code: '10.1.1' }], hardinessZone: 9, lat: 36.1699, lng: -115.1398 },
+    // OK (Great Plains)
+    { zip: '73102', state: 'OK', ecoregions: [{ code: '9.6.2' }], hardinessZone: 7, lat: 35.4676, lng: -97.5164 },
+    // AR (Southeast)
+    { zip: '72201', state: 'AR', ecoregions: [{ code: '8.6.2' }], hardinessZone: 7, lat: 34.7465, lng: -92.2896 },
+    // LA (Southeast)
+    { zip: '70112', state: 'LA', ecoregions: [{ code: '8.5.2' }], hardinessZone: 9, lat: 29.9511, lng: -90.0715 },
+    // MS (Southeast)
+    { zip: '39201', state: 'MS', ecoregions: [{ code: '8.5.1' }], hardinessZone: 8, lat: 32.2988, lng: -90.1848 },
+    // AL (Southeast)
+    { zip: '35203', state: 'AL', ecoregions: [{ code: '8.5.1' }], hardinessZone: 8, lat: 33.5186, lng: -86.8104 },
+    // WV (Mid-Atlantic)
+    { zip: '25301', state: 'WV', ecoregions: [{ code: '8.3.4' }], hardinessZone: 6, lat: 38.3498, lng: -81.6326 },
+    // VA (Mid-Atlantic)
+    { zip: '23219', state: 'VA', ecoregions: [{ code: '8.3.5' }], hardinessZone: 7, lat: 37.5407, lng: -77.4360 },
+    // MD (Mid-Atlantic)
+    { zip: '21201', state: 'MD', ecoregions: [{ code: '8.1.7' }], hardinessZone: 7, lat: 39.2904, lng: -76.6122 },
+    // DE (Mid-Atlantic)
+    { zip: '19901', state: 'DE', ecoregions: [{ code: '8.1.7' }], hardinessZone: 7, lat: 39.1582, lng: -75.5244 },
+    // DC (Mid-Atlantic)
+    { zip: '20001', state: 'DC', ecoregions: [{ code: '8.1.7' }], hardinessZone: 7, lat: 38.9072, lng: -77.0369 },
+    // NJ (Northeast)
+    { zip: '07101', state: 'NJ', ecoregions: [{ code: '8.1.7' }], hardinessZone: 7, lat: 40.7357, lng: -74.1724 },
+    // CT (Northeast)
+    { zip: '06101', state: 'CT', ecoregions: [{ code: '8.1.4' }], hardinessZone: 6, lat: 41.7658, lng: -72.6734 },
+    // RI (Northeast)
+    { zip: '02901', state: 'RI', ecoregions: [{ code: '8.1.7' }], hardinessZone: 6, lat: 41.8240, lng: -71.4128 },
+    // VT (Northeast)
+    { zip: '05601', state: 'VT', ecoregions: [{ code: '8.1.1' }], hardinessZone: 4, lat: 44.2601, lng: -72.5754 },
+    // NH (Northeast)
+    { zip: '03301', state: 'NH', ecoregions: [{ code: '8.1.1' }], hardinessZone: 5, lat: 43.2081, lng: -71.5376 },
+    // ME (Northeast)
+    { zip: '04101', state: 'ME', ecoregions: [{ code: '8.1.1' }], hardinessZone: 5, lat: 43.6591, lng: -70.2568 },
+    // WI (additional)
+    { zip: '54880', state: 'WI', ecoregions: [{ code: '9.4.1' }], hardinessZone: 4, lat: 46.0202, lng: -91.4904 },
+    // MN (additional)
+    { zip: '55802', state: 'MN', ecoregions: [{ code: '9.4.1' }], hardinessZone: 3, lat: 46.7867, lng: -92.1005 },
+    // ND (Great Plains)
+    { zip: '58501', state: 'ND', ecoregions: [{ code: '9.4.3' }], hardinessZone: 4, lat: 46.8083, lng: -100.7837 },
+    // SD (Great Plains)
+    { zip: '57501', state: 'SD', ecoregions: [{ code: '9.5.1' }], hardinessZone: 4, lat: 44.3683, lng: -100.3510 },
+    // WV (additional)
+    { zip: '26501', state: 'WV', ecoregions: [{ code: '8.3.5' }], hardinessZone: 6, lat: 39.6296, lng: -79.9559 },
   ]
 
   for (const z of zips) {
@@ -555,36 +651,39 @@ async function seed() {
   }
   console.log(`Seeded ${nurseries.length} nurseries`)
 
-  // ── Posts ─────────────────────────────────────────────────────────────────
-  const posts = [
-    {
-      slug: 'what-are-keystone-plants',
-      title: "What Are Keystone Plants? The Science Behind Nature's Most Powerful Native Species",
-      excerpt:
-        "Just 14% of native plant species support 90% of caterpillars. Douglas Tallamy's research reveals why a small group of powerhouse native plants — keystones — does nearly all the ecological work.",
-      publishedAt: '2026-05-01T00:00:00.000Z',
-      body: '<p>Keystone plants are native plant species that support a disproportionately large share of local wildlife.</p>',
-    },
-    {
-      slug: 'how-to-find-trustworthy-native-plant-nursery',
-      title: 'How to Find a Trustworthy Native Plant Nursery',
-      excerpt:
-        'Not all native plants are created equal. Here is what to look for when sourcing plants from a nursery.',
-      publishedAt: '2026-05-10T00:00:00.000Z',
-      body: '<p>When shopping for native plants, provenance matters as much as species.</p>',
-    },
-  ]
+  // ── Posts (from content/post-*.md) ────────────────────────────────────────
+  const { getAllPostDrafts } = await import('./content-to-posts')
+  const postDrafts = getAllPostDrafts()
 
-  for (const p of posts) {
+  for (const p of postDrafts) {
     const existing = await payload.find({
       collection: 'posts',
       where: { slug: { equals: p.slug } },
       limit: 1,
     })
     if (existing.docs[0]) {
-      await payload.update({ collection: 'posts', id: existing.docs[0].id, data: p as any })
+      await payload.update({
+        collection: 'posts',
+        id: existing.docs[0].id,
+        data: {
+          slug: p.slug,
+          title: p.title,
+          excerpt: p.excerpt,
+          publishedAt: p.publishedAt,
+          body: p.body,
+        } as any,
+      })
     } else {
-      await payload.create({ collection: 'posts', data: p as any })
+      await payload.create({
+        collection: 'posts',
+        data: {
+          slug: p.slug,
+          title: p.title,
+          excerpt: p.excerpt,
+          publishedAt: p.publishedAt,
+          body: p.body,
+        } as any,
+      })
     }
     console.log(`Seeded post: ${p.title}`)
   }

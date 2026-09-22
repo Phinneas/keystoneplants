@@ -6,6 +6,7 @@ export const Plants: CollectionConfig = {
     useAsTitle: 'commonName',
     defaultColumns: ['commonName', 'scientificName', 'plantType', 'hardinessZoneMin', 'hardinessZoneMax'],
   },
+  timestamps: true,
   fields: [
     { name: 'slug', type: 'text', required: true, unique: true, index: true },
     { name: 'commonName', type: 'text', required: true },
@@ -36,7 +37,7 @@ export const Plants: CollectionConfig = {
       hasMany: true,
       options: [
         'northeast', 'southeast', 'midwest', 'great-plains',
-        'southwest', 'northwest', 'mountain-west',
+        'southwest', 'northwest', 'mountain-west', 'california',
       ],
     },
     {

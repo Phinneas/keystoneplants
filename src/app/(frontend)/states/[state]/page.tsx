@@ -336,19 +336,19 @@ export default async function StatePage({ params }: StatePageProps) {
     <div className="max-w-5xl mx-auto px-6 py-10 space-y-10">
       {/* Header */}
       <div className="space-y-4">
-        <div className="text-xs font-medium text-[#6b5b5d] uppercase tracking-widest">
+        <div className="text-xs font-medium text-[var(--kn-muted)] uppercase tracking-widest">
           State Directory
         </div>
-        <h1 className="text-3xl font-bold text-[#3D0C11] font-[var(--font-figtree)]">
+        <h1 className="text-3xl font-bold text-[var(--kn-ink)] font-[var(--font-figtree)]">
           Native Plant Nurseries in {meta.name}
         </h1>
-        <p className="text-base text-[#6b5b5d] max-w-2xl leading-relaxed">{meta.blurb}</p>
+        <p className="text-base text-[var(--kn-muted)] max-w-2xl leading-relaxed">{meta.blurb}</p>
         <div className="flex items-center gap-2 flex-wrap">
-          <span className="text-xs text-[#6b5b5d] font-medium">Ecoregions:</span>
+          <span className="text-xs text-[var(--kn-muted)] font-medium">Ecoregions:</span>
           {meta.ecoregions.split(" · ").map((r) => (
             <span
               key={r}
-              className="text-xs px-2 py-0.5 rounded-sm border border-[#e8f5d8] bg-[#f8fef3] text-[#6b5b5d]"
+              className="text-xs px-2 py-0.5 rounded-sm border border-[var(--kn-line)] bg-[var(--kn-surface)] text-[var(--kn-muted)]"
             >
               {r}
             </span>
@@ -359,13 +359,13 @@ export default async function StatePage({ params }: StatePageProps) {
       {/* Nursery list */}
       <div>
         {nurseries.length === 0 ? (
-          <div className="py-16 text-center space-y-3 border border-dashed border-[#e8f5d8] rounded-sm">
-            <p className="text-[#3D0C11] font-medium">
+          <div className="py-16 text-center space-y-3 border border-dashed border-[var(--kn-line)] rounded-sm">
+            <p className="text-[var(--kn-ink)] font-medium">
               No nurseries listed in {meta.name} yet.
             </p>
-            <p className="text-sm text-[#6b5b5d]">
+            <p className="text-sm text-[var(--kn-muted)]">
               Know a good one?{" "}
-              <a href="/suggest" className="underline hover:text-[#3D0C11]">
+              <a href="/suggest" className="underline hover:text-[var(--kn-ink)]">
                 Suggest a nursery
               </a>
               .
@@ -373,7 +373,7 @@ export default async function StatePage({ params }: StatePageProps) {
           </div>
         ) : (
           <>
-            <p className="text-sm text-[#6b5b5d] mb-5">
+            <p className="text-sm text-[var(--kn-muted)] mb-5">
               {nurseries.length} nurser{nurseries.length !== 1 ? "ies" : "y"} in {meta.name}
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -386,10 +386,10 @@ export default async function StatePage({ params }: StatePageProps) {
       </div>
 
       {/* Cross-link to zip search */}
-      <div className="border-t border-[#e8f5d8] pt-8">
-        <p className="text-sm text-[#6b5b5d]">
+      <div className="border-t border-[var(--kn-line)] pt-8">
+        <p className="text-sm text-[var(--kn-muted)]">
           Looking for nurseries near a specific location?{" "}
-          <Link href="/nurseries" className="text-[#3D0C11] font-medium underline decoration-[#DDFC74] underline-offset-2 hover:decoration-2">
+          <Link href="/nurseries" className="text-[var(--kn-ink)] font-medium underline decoration-[#DDFC74] underline-offset-2 hover:decoration-2">
             Search by zip code →
           </Link>
         </p>

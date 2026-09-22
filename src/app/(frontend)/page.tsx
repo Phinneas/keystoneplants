@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Hero } from "@/components/Hero";
+import { JsonLd } from "@/components/JsonLd";
 import { Reveal, RevealItem } from "@/components/Reveal";
 import { SwayingMeadow } from "@/components/SwayingMeadow";
 import { ZipSearchForm } from "@/components/ZipSearchForm";
@@ -31,6 +32,24 @@ const DISCOVERY_PATHS = [
 export default function HomePage(): React.ReactElement {
   return (
     <div className="field-home">
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        name: "Keystone Nurseries — Native Plant Field Guide",
+        description: "Find native plant nurseries by ZIP code, browse keystone species by ecoregion, and discover which plants support the most wildlife in your region.",
+        url: "https://www.keystonenurseries.com",
+        publisher: {
+          "@type": "Organization",
+          name: "Keystone Nurseries",
+          url: "https://www.keystonenurseries.com",
+        },
+        mainEntity: {
+          "@type": "WebSite",
+          name: "Keystone Nurseries",
+          url: "https://www.keystonenurseries.com",
+          description: "A living field guide for finding native plant nurseries and the plants that belong where you live.",
+        },
+      }} />
       <Hero
         image="/hero-native-meadow.jpg"
         eyebrow="A living field guide for native plants"
@@ -39,6 +58,14 @@ export default function HomePage(): React.ReactElement {
         ctaLabel="Find a nursery"
         ctaHref="#find-a-nursery"
       />
+
+      {/* Extractable definition — factual block for AI snippet extraction */}
+      <p className="sr-only">
+        Keystone Nurseries is a free directory of native plant nurseries across the United States
+        and Canada. Search by ZIP code to find growers near you, browse native plants by ecoregion,
+        and discover which keystone species support the most wildlife in your region. Data sourced
+        from the National Wildlife Federation and Doug Tallamy&apos;s research at the University of Delaware.
+      </p>
 
       <section id="find-a-nursery" className="field-search-panel" aria-labelledby="find-a-nursery-title">
         <p id="find-a-nursery-title" className="field-search-panel__label">Start close to home</p>
@@ -55,7 +82,7 @@ export default function HomePage(): React.ReactElement {
             <p className="field-section__eyebrow">Begin with belonging</p>
             <h2 id="discover-title" className="field-section__heading">A more generous way to grow.</h2>
             <p className="field-section__lede">
-              Keystone Nurseries connects people with the living fabric of their own places. Use it to find good sources, learn what thrives nearby, and make every planting choice a little more meaningful.
+              Keystone Nurseries connects people with the living fabric of their own places. Use it to find good sources, learn what thrives nearby, and make every planting choice a little more meaningful. Or start with the big picture: our <Link href="/resources/keystone-species" className="field-link">keystone species list</Link> shows which plants and animals hold each ecosystem together.
             </p>
           </RevealItem>
         </Reveal>

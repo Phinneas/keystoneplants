@@ -64,13 +64,13 @@ export default function StatesIndexPage() {
   return (
     <div className="max-w-5xl mx-auto px-6 py-10 space-y-8">
       <div className="space-y-3">
-        <div className="text-xs font-medium text-[#6b5b5d] uppercase tracking-widest">
+        <div className="text-xs font-medium text-[var(--kn-muted)] uppercase tracking-widest">
           State Directory
         </div>
-        <h1 className="text-3xl font-bold text-[#3D0C11] font-[var(--font-figtree)]">
+        <h1 className="text-3xl font-bold text-[var(--kn-ink)] font-[var(--font-figtree)]">
           Native Plant Nurseries by State
         </h1>
-        <p className="text-base text-[#6b5b5d] max-w-2xl leading-relaxed">
+        <p className="text-base text-[var(--kn-muted)] max-w-2xl leading-relaxed">
           Browse nurseries specializing in locally sourced native plants by state. Each listing
           includes nurseries verified to stock plants native to their region.
         </p>
@@ -81,27 +81,27 @@ export default function StatesIndexPage() {
           <Link
             key={code}
             href={`/states/${code.toLowerCase()}`}
-            className="group flex flex-col gap-2 rounded-sm border border-[#e8f5d8] bg-white p-5 hover:shadow-md transition-shadow"
+            className="group flex flex-col gap-2 rounded-sm border border-[var(--kn-line)] bg-white p-5 hover:shadow-md transition-shadow"
           >
             <div className="flex items-center justify-between">
-              <span className="text-2xl font-bold text-[#3D0C11] font-[var(--font-figtree)] group-hover:underline decoration-[#DDFC74] decoration-2 underline-offset-2">
+              <span className="text-2xl font-bold text-[var(--kn-ink)] font-[var(--font-figtree)] group-hover:underline decoration-[#DDFC74] decoration-2 underline-offset-2">
                 {name}
               </span>
-              <span className="text-xs font-mono text-[#6b5b5d] border border-[#e8f5d8] px-1.5 py-0.5 rounded-sm">
+              <span className="text-xs font-mono text-[var(--kn-muted)] border border-[var(--kn-line)] px-1.5 py-0.5 rounded-sm">
                 {code}
               </span>
             </div>
-            <p className="text-xs text-[#6b5b5d] leading-relaxed">{tagline}</p>
+            <p className="text-xs text-[var(--kn-muted)] leading-relaxed">{tagline}</p>
           </Link>
         ))}
       </div>
 
-      <div className="border-t border-[#e8f5d8] pt-6">
-        <p className="text-sm text-[#6b5b5d]">
+      <div className="border-t border-[var(--kn-line)] pt-6">
+        <p className="text-sm text-[var(--kn-muted)]">
           More states being added regularly. Can&rsquo;t find yours?{" "}
           <Link
             href="/nurseries"
-            className="text-[#3D0C11] font-medium underline decoration-[#DDFC74] underline-offset-2 hover:decoration-2"
+            className="text-[var(--kn-ink)] font-medium underline decoration-[#DDFC74] underline-offset-2 hover:decoration-2"
           >
             Search by zip code
           </Link>{" "}

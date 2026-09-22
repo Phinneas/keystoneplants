@@ -8,7 +8,10 @@ export interface ParsedPost {
   title: string
   excerpt: string | null
   body: SerializedEditorState
+  authorName: string | null
+  authorCredentials: string | null
   publishedAt: string | null
+  updatedAt: string | null
 }
 
 function adapt(doc: Record<string, any>): ParsedPost {
@@ -18,7 +21,10 @@ function adapt(doc: Record<string, any>): ParsedPost {
     title: doc.title,
     excerpt: doc.excerpt ?? null,
     body: doc.body,
+    authorName: doc.authorName ?? null,
+    authorCredentials: doc.authorCredentials ?? null,
     publishedAt: doc.publishedAt ?? null,
+    updatedAt: doc.updatedAt ?? null,
   }
 }
 

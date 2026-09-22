@@ -1,0 +1,35 @@
+# Keystone Nurseries
+> A living field guide for native plant discovery in North America.
+
+Keystone Nurseries connects people with native plant nurseries, regional growing knowledge, and ecological data backed by Tallamy and NWF research. Search by ZIP code to find growers near you, browse native plants by ecoregion, and discover which keystone species support the most wildlife in your region.
+
+## Key Pages
+
+- [Home](https://www.keystonenurseries.com/) — Find native plant nurseries and ecological growing guides
+- [Nursery Finder](https://www.keystonenurseries.com/nurseries) — Search native plant nurseries by ZIP code, state, or specialty
+- [Plant Directory](https://www.keystonenurseries.com/plants) — Browse native plants by name, region, sun/moisture needs, and wildlife value
+- [Keystone Species Guide](https://www.keystonenurseries.com/resources/keystone-species) — Comprehensive list of keystone plants by ecoregion with caterpillar species counts from Tallamy research
+- [Top 20 Keystone Plants](https://www.keystonenurseries.com/resources/top-20-keystone-plants) — Highest-impact keystone plant genera nationwide
+- [Ecoregions](https://www.keystonenurseries.com/ecoregions) — Native plant recommendations by EPA Level III ecoregion with NWF keystone rankings
+- [Plant Spacing Calculator](https://www.keystonenurseries.com/plant-spacing-calculator) — Calculate how many native plants a garden bed can support
+- [Plant Quiz](https://www.keystonenurseries.com/quiz) — Find the right native plants for your yard
+- [By State](https://www.keystonenurseries.com/states) — Native plant nurseries organized by US state
+- [Canada](https://www.keystonenurseries.com/canada) — Native plant nurseries and guides for Canadian provinces
+- [Blog](https://www.keystonenurseries.com/blog) — Field notes on native plant gardening
+
+## Data Sources
+
+- National Wildlife Federation "Keystone Plants by Ecoregion" — regional plant lists ranked by ecological value
+- Tallamy, D.W. & Shropshire, K.J. (2020). "National Biodiversity Rankings for Arthropod Herbivores Based on Their Specialization on Native Plant Genera." Nature Communications. 14% of native plant genera support 90% of caterpillar species.
+- Narango, D.L., Tallamy, D.W., & Shropshire, K.J. (2020). "Non-native plants reduce the growth of native birds." Nature Communications.
+- Fowler, J. (2016). USDA Forest Service — specialist bee data by plant genus.
+- Paine, R.T. (1969). "A Note on Trophic Complexity and Community Stability." The American Naturalist.
+
+## Coverage
+
+- All 50 US states + 13 Canadian provinces and territories
+- Nursery directory with ZIP code proximity search
+- Ecoregion-specific plant recommendations (7 major North American regions)
+- Growing conditions: sun, moisture, hardiness zones, height
+- Wildlife value: caterpillar hosts, pollinator plants, bird food sources, nesting material, wildlife cover
+- Keystone rankings: trees ranked by caterpillar species supported, perennials ranked by specialist bee species supported

@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/JsonLd";
 import { getNurseryBySlug } from "@/lib/nurseries";
 
 export const dynamic = 'force-dynamic'
@@ -25,26 +26,51 @@ export default async function NurseryPage({ params }: NurseryPageProps) {
 
   return (
     <div className="max-w-3xl mx-auto px-6 py-12 space-y-10">
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        name: nursery.name,
+        description: nursery.description ?? `Native plant nursery in ${nursery.city}, ${nursery.state}`,
+        url: `https://www.keystonenurseries.com/nurseries/${nursery.slug}`,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: nursery.address ?? undefined,
+          addressLocality: nursery.city,
+          addressRegion: nursery.state,
+          postalCode: nursery.zip,
+          addressCountry: "US",
+        },
+        ...(nursery.phone && { telephone: nursery.phone }),
+        ...(nursery.website && { sameAs: nursery.website }),
+        ...(nursery.lat && nursery.lng && {
+          geo: {
+            "@type": "GeoCoordinates",
+            latitude: nursery.lat,
+            longitude: nursery.lng,
+          },
+        }),
+        ...(nursery.photos[0] && { image: nursery.photos[0] }),
+      }} />
       {/* Header */}
       <div className="space-y-3">
         <div className="flex items-center gap-3 flex-wrap">
           <span
             className={`text-xs px-2 py-0.5 rounded-sm font-medium ${
               nursery.isNativeOnly
-                ? "bg-[#3D0C11] text-[#DDFC74]"
-                : "bg-[#f8fef3] text-[#6b5b5d] border border-[#e8f5d8]"
+                ? "bg-[var(--kn-green-deep)] text-[#DDFC74]"
+                : "bg-[var(--kn-surface)] text-[var(--kn-muted)] border border-[var(--kn-line)]"
             }`}
           >
             {nursery.isNativeOnly ? "Native plants only" : "Native friendly"}
           </span>
           {nursery.verified && (
-            <span className="text-xs px-2 py-0.5 rounded-sm bg-[#DDFC74] text-[#3D0C11] font-medium">
+            <span className="text-xs px-2 py-0.5 rounded-sm bg-[#DDFC74] text-[var(--kn-ink)] font-medium">
               Verified listing
             </span>
           )}
         </div>
-        <h1 className="text-3xl font-bold text-[#3D0C11]">{nursery.name}</h1>
-        <p className="text-[#6b5b5d]">
+        <h1 className="text-3xl font-bold text-[var(--kn-ink)]">{nursery.name}</h1>
+        <p className="text-[var(--kn-muted)]">
           {nursery.address && <>{nursery.address}, </>}
           {nursery.city}, {nursery.state} {nursery.zip}
         </p>
@@ -52,7 +78,7 @@ export default async function NurseryPage({ params }: NurseryPageProps) {
 
       {/* Photo */}
       {nursery.photos[0] && (
-        <div className="aspect-video rounded-sm overflow-hidden bg-[#f8fef3]">
+        <div className="aspect-video rounded-sm overflow-hidden bg-[var(--kn-surface)]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={nursery.photos[0]}
@@ -64,12 +90,12 @@ export default async function NurseryPage({ params }: NurseryPageProps) {
 
       {/* Description */}
       {nursery.description && (
-        <p className="text-[#3D0C11] leading-relaxed">{nursery.description}</p>
+        <p className="text-[var(--kn-ink)] leading-relaxed">{nursery.description}</p>
       )}
 
       {/* Details */}
       <section className="space-y-4">
-        <h2 className="text-lg font-semibold text-[#3D0C11]">Details</h2>
+        <h2 className="text-lg font-semibold text-[var(--kn-ink)]">Details</h2>
         <dl className="space-y-3 text-sm">
           {nursery.website && (
             <Detail label="Website">
@@ -77,7 +103,7 @@ export default async function NurseryPage({ params }: NurseryPageProps) {
                 href={nursery.website}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#BF6900] underline hover:text-[#CC5500] transition-colors"
+                className="text-[var(--kn-ochre)] underline hover:text-[var(--kn-ochre-soft)] transition-colors"
               >
                 {nursery.website.replace(/^https?:\/\//, "")}
               </a>
@@ -85,7 +111,7 @@ export default async function NurseryPage({ params }: NurseryPageProps) {
           )}
           {nursery.phone && (
             <Detail label="Phone">
-              <a href={`tel:${nursery.phone}`} className="text-[#BF6900] hover:text-[#CC5500] transition-colors">
+              <a href={`tel:${nursery.phone}`} className="text-[var(--kn-ochre)] hover:text-[var(--kn-ochre-soft)] transition-colors">
                 {nursery.phone}
               </a>
             </Detail>
@@ -96,7 +122,7 @@ export default async function NurseryPage({ params }: NurseryPageProps) {
                 {nursery.specialties.map((s) => (
                   <span
                     key={s}
-                    className="text-xs px-2 py-0.5 rounded-sm border border-[#e8f5d8] bg-[#f8fef3] text-[#6b5b5d] capitalize"
+                    className="text-xs px-2 py-0.5 rounded-sm border border-[var(--kn-line)] bg-[var(--kn-surface)] text-[var(--kn-muted)] capitalize"
                   >
                     {s}
                   </span>
@@ -107,10 +133,10 @@ export default async function NurseryPage({ params }: NurseryPageProps) {
         </dl>
       </section>
 
-      <div className="pt-4 border-t border-[#e8f5d8]">
+      <div className="pt-4 border-t border-[var(--kn-line)]">
         <a
           href={`/nurseries?zip=${nursery.zip}`}
-          className="text-sm text-[#6b5b5d] hover:text-[#3D0C11] transition-colors"
+          className="text-sm text-[var(--kn-muted)] hover:text-[var(--kn-ink)] transition-colors"
         >
           ← More nurseries near {nursery.zip}
         </a>
@@ -122,8 +148,8 @@ export default async function NurseryPage({ params }: NurseryPageProps) {
 function Detail({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="flex gap-4">
-      <dt className="w-24 shrink-0 text-[#6b5b5d] font-medium">{label}</dt>
-      <dd className="text-[#3D0C11]">{children}</dd>
+      <dt className="w-24 shrink-0 text-[var(--kn-muted)] font-medium">{label}</dt>
+      <dd className="text-[var(--kn-ink)]">{children}</dd>
     </div>
   );
 }
