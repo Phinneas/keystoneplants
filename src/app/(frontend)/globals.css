@@ -232,3 +232,11 @@ html[data-theme="night"] .field-theme-toggle { color: var(--kn-ochre); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+/* White boxes keep Prussian blue text in both themes */
+.bg-white {
+  --kn-ink: #003153;
+  --kn-muted: #003153;
+  --kn-green: #003153;
+  color: #003153;
+}
