@@ -36,12 +36,13 @@
       "binding": "R2",
       "bucket_name": "keystoneplants","preview_bucket_name": "keystoneplants",
     },
-    // Create a R2 binding with the binding name "NEXT_INC_CACHE_R2_BUCKET"
-    // {
-    //   "binding": "NEXT_INC_CACHE_R2_BUCKET",
-    //   "bucket_name": "<BUCKET_NAME>",
-    // },
   ],
+
+  "build": {
+    "command": "pnpm run generate:sitemap && pnpm opennextjs-cloudflare build --dangerouslyUseUnsupportedNextVersion",
+    "cwd": ".",
+    "watch_polling_always": true
+  },
 
   // Here's how to configure an additional environment
   // It can be deployed with `CLOUDFLARE_ENV=staging pnpm run deploy`
