@@ -39,7 +39,7 @@
   ],
 
   "build": {
-    "command": "pnpm run generate:sitemap && pnpm opennextjs-cloudflare build --dangerouslyUseUnsupportedNextVersion",
+    "command": "pnpm run generate:sitemap && pnpm opennextjs-cloudflare build --dangerouslyUseUnsupportedNextVersion --name keystonenurseries",
     "cwd": ".",
     "watch_polling_always": true
   },
