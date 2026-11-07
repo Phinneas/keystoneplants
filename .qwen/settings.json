@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd *)",
+      "Bash(git diff *)",
+      "Bash(grep *)",
+      "Bash(echo *)",
+      "Bash(npx *)",
+      "Bash(tail *)",
+      "Bash(do)",
+      "Bash(curl *)",
+      "Bash(break)",
+      "Bash(sleep *)",
+      "Bash(done)",
+      "Bash(probe)",
+      "Bash(printf *)",
+      "Bash(})",
+      "Bash(probe *)",
+      "Bash(git status *)",
+      "Bash(ls *)",
+      "Bash(wc *)",
+      "Bash(awk *)",
+      "Bash(tr *)"
+    ]
+  },
+  "$version": 4
+}

@@ -2,37 +2,12 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback } from "react";
-
-const SUN_OPTIONS = [
-  { value: "FULL_SUN", label: "Full sun" },
-  { value: "PART_SHADE", label: "Part shade" },
-  { value: "FULL_SHADE", label: "Full shade" },
-];
-
-const MOISTURE_OPTIONS = [
-  { value: "DRY", label: "Dry" },
-  { value: "MEDIUM", label: "Medium" },
-  { value: "WET", label: "Wet" },
-];
-
-const TYPE_OPTIONS = [
-  { value: "TREE", label: "Tree" },
-  { value: "SHRUB", label: "Shrub" },
-  { value: "PERENNIAL", label: "Perennial" },
-  { value: "GRASS", label: "Grass" },
-  { value: "VINE", label: "Vine" },
-  { value: "FERN", label: "Fern" },
-];
-
-const WILDLIFE_OPTIONS = [
-  { value: "HIGH_BEE", label: "High bee value" },
-  { value: "MONARCH_HOST", label: "Monarch host" },
-  { value: "BUTTERFLY_HOST", label: "Butterfly host" },
-  { value: "BIRD_FOOD", label: "Birds" },
-  { value: "MOTH_HOST", label: "Moth host" },
-  { value: "HUMMINGBIRD", label: "Hummingbirds" },
-  { value: "NATIVE_BEE", label: "Native bees" },
-];
+import {
+  MOISTURE_OPTIONS,
+  SUN_OPTIONS,
+  TYPE_OPTIONS,
+  WILDLIFE_OPTIONS,
+} from "@/lib/plant-facets";
 
 export function FilterPanel({ zip }: { zip: string }) {
   const router = useRouter();

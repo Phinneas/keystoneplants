@@ -1,183 +1,179 @@
-import type { Metadata } from 'next'
-import { ZipSearchForm } from '@/components/ZipSearchForm'
-import { NurseryCard } from '@/components/NurseryCard'
-import { getRegionsForZip, isValidZip } from '@/lib/regions'
-import { getNurseriesNearZip } from '@/lib/nurseries'
+import type { Metadata } from "next";
+import { Reveal, RevealItem } from "@/components/Reveal";
+import { NurseryCard } from "@/components/NurseryCard";
+import { ZipSearchForm } from "@/components/ZipSearchForm";
+import { getRegionsForZip, isValidZip } from "@/lib/regions";
+import { getNurseriesNearZip } from "@/lib/nurseries";
 
-export const dynamic = 'force-dynamic'
+export const dynamic = "force-dynamic";
 
 interface NurserySearchPageProps {
   searchParams: Promise<{
-    zip?: string
-    native?: string
-    specialty?: string
-    radius?: string
-  }>
+    zip?: string;
+    native?: string;
+    specialty?: string;
+    radius?: string;
+  }>;
 }
 
 export async function generateMetadata({ searchParams }: NurserySearchPageProps): Promise<Metadata> {
-  const params = await searchParams
+  const params = await searchParams;
   return {
-    title: params.zip ? `Native plant nurseries near ${params.zip}` : 'Find native plant nurseries',
-  }
+    title: params.zip ? `Native plant nurseries near ${params.zip}` : "Find native plant nurseries",
+  };
 }
 
-const SPECIALTY_OPTIONS = [
-  'trees', 'shrubs', 'perennials', 'grasses', 'prairie',
-  'pollinators', 'wetland', 'ferns', 'vines',
-]
+const SPECIALTY_OPTIONS = ["trees", "shrubs", "perennials", "grasses", "prairie", "pollinators", "wetland", "ferns", "vines"];
 
-export default async function NurserySearchPage({ searchParams }: NurserySearchPageProps) {
-  const params = await searchParams
-  const zip = params.zip ?? ''
-  const radiusMiles = Number(params.radius ?? 100)
-  const nativeOnly = params.native === 'true'
-  const specialty = params.specialty
+export default async function NurserySearchPage({ searchParams }: NurserySearchPageProps): Promise<React.ReactElement> {
+  const params = await searchParams;
+  const zip = params.zip ?? "";
+  const radiusMiles = Number(params.radius ?? 100);
+  const nativeOnly = params.native === "true";
+  const specialty = params.specialty;
 
-  let error: string | null = null
-  let nurseries: Awaited<ReturnType<typeof getNurseriesNearZip>> = []
-  let regionInfo: { state: string } | null = null
-  let userCoords: { lat: number; lng: number } | null = null
+  let error: string | null = null;
+  let nurseries: Awaited<ReturnType<typeof getNurseriesNearZip>> = [];
+  let regionInfo: { state: string } | null = null;
+  let userCoords: { lat: number; lng: number } | null = null;
 
   if (zip) {
     if (!isValidZip(zip)) {
-      error = "That doesn't look like a valid zip code."
+      error = "That doesn't look like a valid ZIP code.";
     } else {
-      const region = await getRegionsForZip(zip)
+      const region = await getRegionsForZip(zip);
       if (!region) {
-        error = `No region data for zip code ${zip} yet.`
+        error = `No region data for ZIP code ${zip} yet.`;
       } else {
-        regionInfo = { state: region.state }
+        regionInfo = { state: region.state };
         if (region.lat && region.lng) {
-          userCoords = { lat: region.lat, lng: region.lng }
-          nurseries = await getNurseriesNearZip(region.lat, region.lng, radiusMiles, {
-            nativeOnly,
-            specialty,
-          })
+          userCoords = { lat: region.lat, lng: region.lng };
+          nurseries = await getNurseriesNearZip(region.lat, region.lng, radiusMiles, { nativeOnly, specialty });
         } else {
-          error = `We don't have coordinates for zip code ${zip} yet.`
+          error = `We don't have coordinates for ZIP code ${zip} yet.`;
         }
       }
     }
   }
 
+  const title = zip && !error
+    ? `Nurseries near ${zip}${regionInfo ? `, ${regionInfo.state}` : ""}`
+    : "Find native plant nurseries";
+
   return (
-    <div className="max-w-5xl mx-auto px-6 py-10 space-y-8">
-      <div className="space-y-4">
-        <h1 className="text-2xl font-bold text-[#3D0C11]">
-          {zip && !error
-            ? `Native plant nurseries near ${zip}${regionInfo ? ` · ${regionInfo.state}` : ''}`
-            : 'Find native plant nurseries'}
-        </h1>
-        <ZipSearchForm defaultZip={zip} action="/nurseries" />
-        {error && <p className="text-red-600 text-sm">{error}</p>}
-      </div>
-
-      {zip && !error && userCoords && (
-        <div className="flex gap-8">
-          <aside className="w-48 shrink-0 space-y-5 text-sm">
-            <div>
-              <p className="font-medium text-[#3D0C11] mb-2">Type</p>
-              <div className="space-y-1.5">
-                {[
-                  { label: 'All nurseries', value: '' },
-                  { label: 'Native only', value: 'true' },
-                ].map(({ label, value }) => (
-                  <a
-                    key={value}
-                    href={buildUrl(zip, { native: value, specialty, radius: String(radiusMiles) })}
-                    className={`flex items-center gap-2 text-[#6b5b5d] hover:text-[#3D0C11] transition-colors ${
-                      (value === 'true' ? nativeOnly : !nativeOnly) ? 'font-semibold text-[#3D0C11]' : ''
-                    }`}
-                  >
-                    {label}
-                  </a>
-                ))}
-              </div>
+    <div className="directory-page">
+      <Reveal>
+        <RevealItem>
+          <section className="directory-intro" aria-labelledby="directory-title">
+            <p className="field-section__eyebrow">Native plant directory</p>
+            <h1 id="directory-title">{title}</h1>
+            <p className="mt-5 max-w-2xl text-[1.04rem] leading-7 text-[var(--kn-muted)]">
+              Search the field guide for growers who can help you plant with your local ecology in mind.
+            </p>
+            <div className="mt-7 max-w-xl">
+              <ZipSearchForm defaultZip={zip} action="/nurseries" />
             </div>
+            {error ? <p className="mt-3 text-sm font-medium text-[#a14026]" role="alert">{error}</p> : null}
+          </section>
+        </RevealItem>
+      </Reveal>
 
-            <div>
-              <p className="font-medium text-[#3D0C11] mb-2">Specialty</p>
-              <div className="space-y-1.5">
-                <a
-                  href={buildUrl(zip, { native: nativeOnly ? 'true' : '', radius: String(radiusMiles) })}
-                  className={`block text-[#6b5b5d] hover:text-[#3D0C11] transition-colors ${!specialty ? 'font-semibold text-[#3D0C11]' : ''}`}
-                >
-                  All
-                </a>
-                {SPECIALTY_OPTIONS.map((s) => (
-                  <a
-                    key={s}
-                    href={buildUrl(zip, {
-                      native: nativeOnly ? 'true' : '',
-                      specialty: s,
-                      radius: String(radiusMiles),
-                    })}
-                    className={`block capitalize text-[#6b5b5d] hover:text-[#3D0C11] transition-colors ${specialty === s ? 'font-semibold text-[#3D0C11]' : ''}`}
-                  >
-                    {s}
-                  </a>
-                ))}
-              </div>
+      {!zip ? (
+        <Reveal className="mt-14 max-w-2xl" amount={0.2}>
+          <RevealItem>
+            <div className="rounded-2xl border border-[var(--kn-line)] bg-[var(--kn-surface)] p-7">
+              <p className="font-[var(--font-fraunces)] text-2xl text-[var(--kn-green)]">Where do you want to grow?</p>
+              <p className="mt-2 leading-7 text-[var(--kn-muted)]">A ZIP code lets the guide start with nearby growers, regional conditions, and the nursery communities closest to your landscape.</p>
             </div>
+          </RevealItem>
+        </Reveal>
+      ) : null}
 
-            <div>
-              <p className="font-medium text-[#3D0C11] mb-2">Radius</p>
-              <div className="space-y-1.5">
-                {[25, 50, 100, 200].map((r) => (
-                  <a
-                    key={r}
-                    href={buildUrl(zip, {
-                      native: nativeOnly ? 'true' : '',
-                      specialty,
-                      radius: String(r),
-                    })}
-                    className={`block text-[#6b5b5d] hover:text-[#3D0C11] transition-colors ${radiusMiles === r ? 'font-semibold text-[#3D0C11]' : ''}`}
+      {zip && !error && userCoords ? (
+        <Reveal className="directory-results" amount={0.12} gap={0.14}>
+          <RevealItem>
+            <aside className="directory-filter" aria-label="Filter nursery search results">
+              <FilterGroup label="Growing source">
+                <FilterLink href={buildUrl(zip, { native: "", specialty, radius: String(radiusMiles) })} active={!nativeOnly}>All nurseries</FilterLink>
+                <FilterLink href={buildUrl(zip, { native: "true", specialty, radius: String(radiusMiles) })} active={nativeOnly}>Native only</FilterLink>
+              </FilterGroup>
+              <FilterGroup label="Specialty">
+                <FilterLink href={buildUrl(zip, { native: nativeOnly ? "true" : "", radius: String(radiusMiles) })} active={!specialty}>All specialties</FilterLink>
+                {SPECIALTY_OPTIONS.map((option) => (
+                  <FilterLink
+                    key={option}
+                    href={buildUrl(zip, { native: nativeOnly ? "true" : "", specialty: option, radius: String(radiusMiles) })}
+                    active={specialty === option}
                   >
-                    {r} miles
-                  </a>
+                    {option}
+                  </FilterLink>
                 ))}
-              </div>
-            </div>
-          </aside>
+              </FilterGroup>
+              <FilterGroup label="Search radius">
+                {[25, 50, 100, 200].map((radius) => (
+                  <FilterLink
+                    key={radius}
+                    href={buildUrl(zip, { native: nativeOnly ? "true" : "", specialty, radius: String(radius) })}
+                    active={radiusMiles === radius}
+                  >
+                    {radius} miles
+                  </FilterLink>
+                ))}
+              </FilterGroup>
+            </aside>
+          </RevealItem>
 
-          <div className="flex-1">
-            {nurseries.length === 0 ? (
-              <div className="py-16 text-center space-y-2">
-                <p className="text-[#3D0C11] font-medium">
-                  No nurseries found within {radiusMiles} miles.
-                </p>
-                <p className="text-sm text-[#6b5b5d]">
-                  Try expanding your radius or{' '}
-                  <a href={buildUrl(zip, { radius: '200' })} className="underline hover:text-[#3D0C11]">
-                    searching 200 miles
-                  </a>
-                  .
-                </p>
-              </div>
-            ) : (
-              <>
-                <p className="text-sm text-[#6b5b5d] mb-4">
-                  {nurseries.length} nurseri{nurseries.length !== 1 ? 'es' : 'y'} within {radiusMiles} miles
-                </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {nurseries.map((nursery) => (
-                    <NurseryCard key={nursery.id} {...nursery} />
-                  ))}
+          <RevealItem>
+            <section aria-label="Nursery results">
+              {nurseries.length === 0 ? (
+                <div className="rounded-2xl border border-dashed border-[var(--kn-line)] bg-[var(--kn-surface)] px-7 py-14 text-center">
+                  <p className="font-[var(--font-fraunces)] text-2xl text-[var(--kn-green)]">No nurseries found in this range.</p>
+                  <p className="mt-2 text-[var(--kn-muted)]">Try expanding your radius or clearing one of the filters.</p>
+                  <a className="field-link mt-5 inline-block" href={buildUrl(zip, { radius: "200" })}>Search 200 miles <span aria-hidden>→</span></a>
                 </div>
-              </>
-            )}
-          </div>
-        </div>
-      )}
+              ) : (
+                <>
+                  <p className="directory-count">
+                    {nurseries.length} nurseri{nurseries.length === 1 ? "y" : "es"} within {radiusMiles} miles
+                  </p>
+                  <Reveal className="directory-grid" amount={0.08} gap={0.09}>
+                    {nurseries.map((nursery) => (
+                      <RevealItem key={nursery.id}>
+                        <NurseryCard {...nursery} />
+                      </RevealItem>
+                    ))}
+                  </Reveal>
+                </>
+              )}
+            </section>
+          </RevealItem>
+        </Reveal>
+      ) : null}
     </div>
-  )
+  );
 }
 
-function buildUrl(zip: string, params: Record<string, string | undefined>) {
-  const p = new URLSearchParams({ zip })
-  for (const [k, v] of Object.entries(params)) {
-    if (v) p.set(k, v)
+function FilterGroup({ label, children }: { label: string; children: React.ReactNode }): React.ReactElement {
+  return (
+    <section className="directory-filter__group">
+      <h2 className="directory-filter__label">{label}</h2>
+      {children}
+    </section>
+  );
+}
+
+function FilterLink({ href, active, children }: { href: string; active: boolean; children: React.ReactNode }): React.ReactElement {
+  return (
+    <a href={href} className={active ? "is-active" : undefined} aria-current={active ? "page" : undefined}>
+      {children}
+    </a>
+  );
+}
+
+function buildUrl(zip: string, params: Record<string, string | undefined>): string {
+  const search = new URLSearchParams({ zip });
+  for (const [key, value] of Object.entries(params)) {
+    if (value) search.set(key, value);
   }
-  return `/nurseries?${p.toString()}`
+  return `/nurseries?${search.toString()}`;
 }

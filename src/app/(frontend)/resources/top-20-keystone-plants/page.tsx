@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Source_Serif_4, DM_Mono } from "next/font/google";
+import { JsonLd } from "@/components/JsonLd";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -494,6 +495,18 @@ export default function Top20KeystonePlantsPage() {
   return (
     <div className={`kp-page ${playfair.variable} ${sourceSerif.variable} ${dmMono.variable}`}>
       <style>{css}</style>
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: "Top 20 Keystone Plant Species for Wildlife",
+        description: "The native plants that do the most ecological heavy lifting — ranked by caterpillar species supported, based on Doug Tallamy's research and NWF keystone data.",
+        url: "https://www.keystonenurseries.com/resources/top-20-keystone-plants",
+        publisher: {
+          "@type": "Organization",
+          name: "Keystone Nurseries",
+          url: "https://www.keystonenurseries.com",
+        },
+      }} />
 
       {/* HERO */}
       <header className="hero">
@@ -1060,6 +1073,12 @@ export default function Top20KeystonePlantsPage() {
           </div>
         </div>
       </section>
+
+      <div style={{ maxWidth: 700, margin: "3rem auto 0", padding: "0 1.5rem", textAlign: "center", fontFamily: "var(--font-source-serif), Georgia, serif" }}>
+        <p style={{ fontSize: "1.05rem", color: "#4a6741", lineHeight: 1.7 }}>
+          For a comprehensive reference covering keystone plants, animals, and ecosystem connections across all North American biomes, see the full <a href="/resources/keystone-species" style={{ color: "#2d4a2d", fontWeight: 700, textDecoration: "underline" }}>Keystone Species List</a>.
+        </p>
+      </div>
 
       {/* FOOTER */}
       <div className="kp-footer">

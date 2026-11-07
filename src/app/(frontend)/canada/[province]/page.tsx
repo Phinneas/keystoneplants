@@ -118,47 +118,47 @@ export default async function ProvincePage({
   return (
     <div className="max-w-5xl mx-auto px-6 py-10 space-y-10">
       {/* Breadcrumb */}
-      <nav className="flex items-center gap-2 text-xs text-[#6b5b5d]">
-        <Link href="/canada" className="hover:text-[#3D0C11] transition-colors">
+      <nav className="flex items-center gap-2 text-xs text-[var(--kn-muted)]">
+        <Link href="/canada" className="hover:text-[var(--kn-ink)] transition-colors">
           Canada
         </Link>
         <span>/</span>
-        <span className="text-[#3D0C11] font-medium">{meta.name}</span>
+        <span className="text-[var(--kn-ink)] font-medium">{meta.name}</span>
       </nav>
 
       {/* Header */}
       <div className="space-y-4 max-w-3xl">
-        <div className="text-xs font-medium text-[#6b5b5d] uppercase tracking-widest">
+        <div className="text-xs font-medium text-[var(--kn-muted)] uppercase tracking-widest">
           Native Plant Nurseries
         </div>
-        <h1 className="text-4xl font-bold text-[#3D0C11] font-[var(--font-figtree)] leading-tight">
+        <h1 className="text-4xl font-bold text-[var(--kn-ink)] font-[var(--font-figtree)] leading-tight">
           {meta.name}
         </h1>
         <div className="flex flex-wrap gap-2">
           {meta.ecozones.split(" · ").map((zone) => (
             <span
               key={zone}
-              className="text-xs font-medium bg-[#e8f5d8] text-[#3D0C11] px-2.5 py-1 rounded-sm"
+              className="text-xs font-medium bg-[var(--kn-line)] text-[var(--kn-ink)] px-2.5 py-1 rounded-sm"
             >
               {zone}
             </span>
           ))}
         </div>
-        <p className="text-base text-[#6b5b5d] leading-relaxed">{meta.blurb}</p>
+        <p className="text-base text-[var(--kn-muted)] leading-relaxed">{meta.blurb}</p>
       </div>
 
       {/* Nursery listings placeholder */}
       <section className="space-y-4">
-        <h2 className="text-xl font-bold text-[#3D0C11] font-[var(--font-figtree)]">
+        <h2 className="text-xl font-bold text-[var(--kn-ink)] font-[var(--font-figtree)]">
           Nurseries in {meta.name}
         </h2>
-        <div className="rounded-sm border border-[#e8f5d8] bg-[#f9fef5] p-8 text-center space-y-3">
-          <p className="text-[#6b5b5d] text-sm">
+        <div className="rounded-sm border border-[var(--kn-line)] bg-[var(--kn-paper)] p-8 text-center space-y-3">
+          <p className="text-[var(--kn-muted)] text-sm">
             Nursery listings for {meta.name} are being added. Know a nursery that should be here?
           </p>
           <a
             href="mailto:hello@keystonenurseries.com"
-            className="inline-block text-sm font-medium text-[#3D0C11] underline decoration-[#DDFC74] underline-offset-2 hover:decoration-2"
+            className="inline-block text-sm font-medium text-[var(--kn-ink)] underline decoration-[#DDFC74] underline-offset-2 hover:decoration-2"
           >
             Submit a nursery →
           </a>
@@ -166,28 +166,28 @@ export default async function ProvincePage({
       </section>
 
       {/* Keystone plants CTA */}
-      <section className="rounded-sm border border-[#e8f5d8] bg-white p-6 space-y-3">
-        <h2 className="text-lg font-bold text-[#3D0C11] font-[var(--font-figtree)]">
+      <section className="rounded-sm border border-[var(--kn-line)] bg-white p-6 space-y-3">
+        <h2 className="text-lg font-bold text-[var(--kn-ink)] font-[var(--font-figtree)]">
           Find keystone plants for your region
         </h2>
-        <p className="text-sm text-[#6b5b5d] leading-relaxed">
+        <p className="text-sm text-[var(--kn-muted)] leading-relaxed">
           Not sure which native plants to prioritize? Our quiz identifies the highest-impact
           keystone species for your specific ecoregion — the plants that do the most to support
           birds, bees, and butterflies where you live.
         </p>
         <Link
           href="/quiz"
-          className="inline-block text-sm font-medium bg-[#3D0C11] text-[#DDFC74] px-4 py-2 rounded-sm hover:bg-[#BF6900] transition-colors"
+          className="inline-block text-sm font-medium bg-[var(--kn-green-deep)] text-[#DDFC74] px-4 py-2 rounded-sm hover:bg-[var(--kn-ochre)] transition-colors"
         >
           Take the plant quiz
         </Link>
       </section>
 
       {/* Back link */}
-      <div className="border-t border-[#e8f5d8] pt-6">
+      <div className="border-t border-[var(--kn-line)] pt-6">
         <Link
           href="/canada"
-          className="text-sm text-[#6b5b5d] hover:text-[#3D0C11] transition-colors"
+          className="text-sm text-[var(--kn-muted)] hover:text-[var(--kn-ink)] transition-colors"
         >
           ← All Canadian provinces
         </Link>

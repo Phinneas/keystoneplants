@@ -216,7 +216,16 @@ export interface Plant {
   sunRequirement?: ('full-sun' | 'part-shade' | 'full-shade') | null;
   moistureRequirement?: ('dry' | 'medium' | 'wet' | 'adaptable') | null;
   nativeRegions?:
-    | ('northeast' | 'southeast' | 'midwest' | 'great-plains' | 'southwest' | 'northwest' | 'mountain-west')[]
+    | (
+        | 'northeast'
+        | 'southeast'
+        | 'midwest'
+        | 'great-plains'
+        | 'southwest'
+        | 'northwest'
+        | 'mountain-west'
+        | 'california'
+      )[]
     | null;
   wildlifeValue?: ('caterpillar-host' | 'pollinator-plant' | 'bird-food' | 'nesting-material' | 'cover')[] | null;
   photos?:
@@ -237,10 +246,26 @@ export interface Post {
   slug: string;
   title: string;
   excerpt?: string | null;
-  body: string;
+  body: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  authorName?: string | null;
+  authorCredentials?: string | null;
   publishedAt?: string | null;
-  coverImage?: (number | null) | Media;
   updatedAt: string;
+  coverImage?: (number | null) | Media;
   createdAt: string;
 }
 /**
@@ -455,9 +480,11 @@ export interface PostsSelect<T extends boolean = true> {
   title?: T;
   excerpt?: T;
   body?: T;
+  authorName?: T;
+  authorCredentials?: T;
   publishedAt?: T;
-  coverImage?: T;
   updatedAt?: T;
+  coverImage?: T;
   createdAt?: T;
 }
 /**

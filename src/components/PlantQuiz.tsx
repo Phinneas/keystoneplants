@@ -66,16 +66,16 @@ function ProgressBar({ step }: { step: Step }) {
         return (
           <div key={label} className="flex items-center gap-2">
             {i > 0 && (
-              <div className={`h-px w-8 ${done ? 'bg-[#BF6900]' : 'bg-[#e8f5d8]'}`} />
+              <div className={`h-px w-8 ${done ? 'bg-[var(--kn-ochre)]' : 'bg-[var(--kn-line)]'}`} />
             )}
             <div className="flex items-center gap-1.5">
               <div
                 className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold transition-colors
-                  ${done ? 'bg-[#BF6900] text-white' : active ? 'bg-[#3D0C11] text-white' : 'bg-[#f8fef3] border border-[#e8f5d8] text-[#6b5b5d]'}`}
+                  ${done ? 'bg-[var(--kn-ochre)] text-white' : active ? 'bg-[var(--kn-green-deep)] text-white' : 'bg-[var(--kn-surface)] border border-[var(--kn-line)] text-[var(--kn-muted)]'}`}
               >
                 {done ? '✓' : num}
               </div>
-              <span className={`text-xs hidden sm:block ${active ? 'text-[#3D0C11] font-medium' : 'text-[#6b5b5d]'}`}>
+              <span className={`text-xs hidden sm:block ${active ? 'text-[var(--kn-ink)] font-medium' : 'text-[var(--kn-muted)]'}`}>
                 {label}
               </span>
             </div>
@@ -100,8 +100,8 @@ function OptionCard({
       onClick={onClick}
       className={`w-full text-left px-5 py-4 rounded-sm border transition-all
         ${selected
-          ? 'border-[#BF6900] bg-[#fef8ec] shadow-sm'
-          : 'border-[#e8f5d8] bg-white hover:border-[#BF6900] hover:shadow-sm'
+          ? 'border-[var(--kn-ochre)] bg-[var(--kn-surface)] shadow-sm'
+          : 'border-[var(--kn-line)] bg-white hover:border-[var(--kn-ochre)] hover:shadow-sm'
         }`}
     >
       {children}
@@ -127,9 +127,9 @@ function ResultCard({ plant }: { plant: ParsedPlant }) {
   return (
     <Link
       href={`/plants/${plant.slug}`}
-      className="group flex flex-col rounded-sm border border-[#e8f5d8] bg-white overflow-hidden hover:shadow-md transition-shadow"
+      className="group flex flex-col rounded-sm border border-[var(--kn-line)] bg-white overflow-hidden hover:shadow-md transition-shadow"
     >
-      <div className="aspect-[4/3] bg-[#f8fef3] overflow-hidden">
+      <div className="aspect-[4/3] bg-[var(--kn-surface)] overflow-hidden">
         {plant.photos[0] ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -138,34 +138,34 @@ function ResultCard({ plant }: { plant: ParsedPlant }) {
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center text-[#6b5b5d] text-sm">
+          <div className="w-full h-full flex items-center justify-center text-[var(--kn-muted)] text-sm">
             No photo
           </div>
         )}
       </div>
       <div className="p-4 flex flex-col gap-2 flex-1">
         <div>
-          <h3 className="font-semibold text-[#3D0C11] group-hover:underline decoration-[#DDFC74] decoration-2 underline-offset-2">
+          <h3 className="font-semibold text-[var(--kn-green)] group-hover:underline decoration-[#DDFC74] decoration-2 underline-offset-2">
             {plant.commonName}
           </h3>
-          <p className="text-sm italic text-[#6b5b5d]">{plant.scientificName}</p>
+          <p className="text-sm italic text-[var(--kn-muted)]">{plant.scientificName}</p>
         </div>
         <div className="flex flex-wrap gap-1 mt-auto pt-2">
           {plant.sunRequirement && (
-            <span className="text-xs px-2 py-0.5 rounded-sm border bg-[#f8fef3] text-[#2d5016] border-[#e8f5d8]">
+            <span className="text-xs px-2 py-0.5 rounded-sm border bg-[var(--kn-surface)] text-[var(--kn-green)] border-[var(--kn-line)]">
               {SUN_LABELS[plant.sunRequirement] ?? plant.sunRequirement}
             </span>
           )}
           {plant.wildlifeValue.slice(0, 2).map((w) => (
             <span
               key={w}
-              className="text-xs px-2 py-0.5 rounded-sm border bg-[#DDFC74]/20 text-[#3D0C11] border-[#DDFC74]"
+              className="text-xs px-2 py-0.5 rounded-sm border bg-[#DDFC74]/20 text-[var(--kn-ink)] border-[#DDFC74]"
             >
               {WILDLIFE_LABELS[w] ?? w}
             </span>
           ))}
           {plant.heightInFeetMax !== null && (
-            <span className="text-xs px-2 py-0.5 rounded-sm border bg-[#f8fef3] text-[#6b5b5d] border-[#e8f5d8]">
+            <span className="text-xs px-2 py-0.5 rounded-sm border bg-[var(--kn-surface)] text-[var(--kn-muted)] border-[var(--kn-line)]">
               {plant.heightInFeetMin ? `${plant.heightInFeetMin}–${plant.heightInFeetMax}` : `to ${plant.heightInFeetMax}`} ft
             </span>
           )}
@@ -231,10 +231,10 @@ export function PlantQuiz() {
       <div>
         <ProgressBar step={1} />
         <div className="space-y-4 mb-6">
-          <h2 className="text-xl font-bold text-[#3D0C11] font-[var(--font-figtree)]">
+          <h2 className="text-xl font-bold text-[var(--kn-ink)] font-[var(--font-figtree)]">
             Which region are you in?
           </h2>
-          <p className="text-sm text-[#6b5b5d]">
+          <p className="text-sm text-[var(--kn-muted)]">
             Native plants and the insects they support co-evolved locally. Pick the region that best
             matches your location.
           </p>
@@ -244,12 +244,12 @@ export function PlantQuiz() {
             <button
               key={group.slug}
               onClick={() => selectRegion(group)}
-              className="text-left px-5 py-4 rounded-sm border border-[#e8f5d8] bg-white hover:border-[#BF6900] hover:shadow-sm transition-all group"
+              className="text-left px-5 py-4 rounded-sm border border-[var(--kn-line)] bg-white hover:border-[var(--kn-ochre)] hover:shadow-sm transition-all group"
             >
-              <p className="font-semibold text-[#3D0C11] group-hover:text-[#BF6900] transition-colors font-[var(--font-figtree)]">
+              <p className="font-semibold text-[var(--kn-ink)] group-hover:text-[var(--kn-ochre)] transition-colors font-[var(--font-figtree)]">
                 {group.name}
               </p>
-              <p className="text-xs text-[#6b5b5d] mt-0.5">{group.states}</p>
+              <p className="text-xs text-[var(--kn-muted)] mt-0.5">{group.states}</p>
             </button>
           ))}
         </div>
@@ -263,10 +263,10 @@ export function PlantQuiz() {
       <div>
         <ProgressBar step={2} />
         <div className="space-y-4 mb-6">
-          <h2 className="text-xl font-bold text-[#3D0C11] font-[var(--font-figtree)]">
+          <h2 className="text-xl font-bold text-[var(--kn-ink)] font-[var(--font-figtree)]">
             How much sun does your planting area get?
           </h2>
-          <p className="text-sm text-[#6b5b5d]">
+          <p className="text-sm text-[var(--kn-muted)]">
             Measure on a typical summer day — sun exposure shapes what plants can thrive where.
           </p>
         </div>
@@ -277,14 +277,14 @@ export function PlantQuiz() {
               selected={answers.sun === opt.value}
               onClick={() => selectSun(opt.value)}
             >
-              <p className="font-semibold text-[#3D0C11]">{opt.label}</p>
-              <p className="text-sm text-[#6b5b5d] mt-0.5">{opt.desc}</p>
+              <p className="font-semibold text-[var(--kn-ink)]">{opt.label}</p>
+              <p className="text-sm text-[var(--kn-muted)] mt-0.5">{opt.desc}</p>
             </OptionCard>
           ))}
         </div>
         <button
           onClick={() => setStep(1)}
-          className="mt-6 text-sm text-[#6b5b5d] hover:text-[#3D0C11] transition-colors"
+          className="mt-6 text-sm text-[var(--kn-muted)] hover:text-[var(--kn-ink)] transition-colors"
         >
           ← Back
         </button>
@@ -298,10 +298,10 @@ export function PlantQuiz() {
       <div>
         <ProgressBar step={3} />
         <div className="space-y-4 mb-6">
-          <h2 className="text-xl font-bold text-[#3D0C11] font-[var(--font-figtree)]">
+          <h2 className="text-xl font-bold text-[var(--kn-ink)] font-[var(--font-figtree)]">
             What wildlife do you most want to support?
           </h2>
-          <p className="text-sm text-[#6b5b5d]">
+          <p className="text-sm text-[var(--kn-muted)]">
             Keystone plants serve multiple roles — choose your top priority and we&rsquo;ll weight
             the results accordingly.
           </p>
@@ -313,14 +313,14 @@ export function PlantQuiz() {
               selected={answers.wildlife === opt.value}
               onClick={() => selectWildlife(opt.value)}
             >
-              <p className="font-semibold text-[#3D0C11]">{opt.label}</p>
-              <p className="text-sm text-[#6b5b5d] mt-0.5">{opt.desc}</p>
+              <p className="font-semibold text-[var(--kn-ink)]">{opt.label}</p>
+              <p className="text-sm text-[var(--kn-muted)] mt-0.5">{opt.desc}</p>
             </OptionCard>
           ))}
         </div>
         <button
           onClick={() => setStep(2)}
-          className="mt-6 text-sm text-[#6b5b5d] hover:text-[#3D0C11] transition-colors"
+          className="mt-6 text-sm text-[var(--kn-muted)] hover:text-[var(--kn-ink)] transition-colors"
         >
           ← Back
         </button>
@@ -336,13 +336,13 @@ export function PlantQuiz() {
       {/* Result header */}
       <div className="flex items-start justify-between gap-4 flex-wrap">
         <div className="space-y-1">
-          <div className="text-xs font-medium text-[#6b5b5d] uppercase tracking-widest">
+          <div className="text-xs font-medium text-[var(--kn-muted)] uppercase tracking-widest">
             Your Results
           </div>
-          <h2 className="text-2xl font-bold text-[#3D0C11] font-[var(--font-figtree)]">
+          <h2 className="text-2xl font-bold text-[var(--kn-ink)] font-[var(--font-figtree)]">
             Keystone Plants for the {group.name}
           </h2>
-          <p className="text-sm text-[#6b5b5d]">
+          <p className="text-sm text-[var(--kn-muted)]">
             {answers.sun && SUN_OPTIONS.find((s) => s.value === answers.sun)?.label}
             {' · '}
             {answers.wildlife &&
@@ -351,47 +351,47 @@ export function PlantQuiz() {
         </div>
         <button
           onClick={restart}
-          className="shrink-0 text-sm text-[#6b5b5d] border border-[#e8f5d8] rounded-sm px-3 py-1.5 hover:border-[#3D0C11] hover:text-[#3D0C11] transition-colors"
+          className="shrink-0 text-sm text-[var(--kn-muted)] border border-[var(--kn-line)] rounded-sm px-3 py-1.5 hover:border-[var(--kn-ink)] hover:text-[var(--kn-ink)] transition-colors"
         >
           Start over
         </button>
       </div>
 
       {/* Top keystone genera for this region */}
-      <div className="border border-[#e8f5d8] rounded-sm p-5 bg-[#f8fef3] space-y-4">
+      <div className="border border-[var(--kn-line)] rounded-sm p-5 bg-[var(--kn-surface)] space-y-4">
         <div>
-          <h3 className="text-base font-bold text-[#3D0C11] font-[var(--font-figtree)]">
+          <h3 className="text-base font-bold text-[var(--kn-green)] font-[var(--font-figtree)]">
             Top Keystone Genera for Your Region
           </h3>
-          <p className="text-xs text-[#6b5b5d] mt-0.5">
+          <p className="text-xs text-[var(--kn-muted)] mt-0.5">
             Based on NWF data — ranked by caterpillar and specialist bee species supported
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <p className="text-xs font-semibold text-[#3D0C11] mb-2">Trees</p>
+            <p className="text-xs font-semibold text-[var(--kn-ink)] mb-2">Trees</p>
             <div className="space-y-1">
               {group.keystoneTrees.slice(0, 3).map((t) => (
                 <div key={t.genus} className="flex items-center justify-between text-sm">
-                  <span className="italic text-[#3D0C11]">
+                  <span className="italic text-[var(--kn-ink)]">
                     {t.genus}{' '}
-                    <span className="not-italic text-[#6b5b5d]">({t.common})</span>
+                    <span className="not-italic text-[var(--kn-muted)]">({t.common})</span>
                   </span>
-                  <span className="text-xs text-[#6b5b5d]">{t.caterpillars} spp.</span>
+                  <span className="text-xs text-[var(--kn-muted)]">{t.caterpillars} spp.</span>
                 </div>
               ))}
             </div>
           </div>
           <div>
-            <p className="text-xs font-semibold text-[#3D0C11] mb-2">Perennials</p>
+            <p className="text-xs font-semibold text-[var(--kn-ink)] mb-2">Perennials</p>
             <div className="space-y-1">
               {group.keystonePerennials.slice(0, 3).map((p) => (
                 <div key={p.genus} className="flex items-center justify-between text-sm">
-                  <span className="italic text-[#3D0C11]">
+                  <span className="italic text-[var(--kn-ink)]">
                     {p.genus}{' '}
-                    <span className="not-italic text-[#6b5b5d]">({p.common})</span>
+                    <span className="not-italic text-[var(--kn-muted)]">({p.common})</span>
                   </span>
-                  <span className="text-xs text-[#BF6900] font-medium">
+                  <span className="text-xs text-[var(--kn-ochre)] font-medium">
                     {p.specialistBees} bees
                   </span>
                 </div>
@@ -401,7 +401,7 @@ export function PlantQuiz() {
         </div>
         <Link
           href={`/ecoregions/${group.slug}`}
-          className="inline-block text-xs text-[#BF6900] underline underline-offset-2 hover:text-[#CC5500] transition-colors"
+          className="inline-block text-xs text-[var(--kn-ochre)] underline underline-offset-2 hover:text-[var(--kn-ochre-soft)] transition-colors"
         >
           See full {group.name} ecoregion guide →
         </Link>
@@ -410,20 +410,20 @@ export function PlantQuiz() {
       {/* Plant grid */}
       {loading ? (
         <div className="py-16 text-center">
-          <p className="text-sm text-[#6b5b5d]">Finding your plants&hellip;</p>
+          <p className="text-sm text-[var(--kn-muted)]">Finding your plants&hellip;</p>
         </div>
       ) : plants.length === 0 ? (
-        <div className="py-12 text-center border border-dashed border-[#e8f5d8] rounded-sm space-y-3">
-          <p className="text-sm font-medium text-[#3D0C11]">
+        <div className="py-12 text-center border border-dashed border-[var(--kn-line)] rounded-sm space-y-3">
+          <p className="text-sm font-medium text-[var(--kn-ink)]">
             No plants in the directory match all your filters yet.
           </p>
-          <p className="text-sm text-[#6b5b5d]">
+          <p className="text-sm text-[var(--kn-muted)]">
             The directory is growing — check the full{' '}
-            <Link href="/plants" className="underline hover:text-[#3D0C11]">
+            <Link href="/plants" className="underline hover:text-[var(--kn-ink)]">
               plant list
             </Link>{' '}
             or browse by{' '}
-            <Link href={`/ecoregions/${group.slug}`} className="underline hover:text-[#3D0C11]">
+            <Link href={`/ecoregions/${group.slug}`} className="underline hover:text-[var(--kn-ink)]">
               ecoregion
             </Link>
             .
@@ -431,7 +431,7 @@ export function PlantQuiz() {
         </div>
       ) : (
         <div className="space-y-4">
-          <p className="text-sm text-[#6b5b5d]">
+          <p className="text-sm text-[var(--kn-muted)]">
             {plants.length} plant{plants.length !== 1 ? 's' : ''} in the directory for your
             selections
           </p>
@@ -444,20 +444,20 @@ export function PlantQuiz() {
       )}
 
       {/* Email capture */}
-      <div className="border-t border-[#e8f5d8] pt-8">
+      <div className="border-t border-[var(--kn-line)] pt-8">
         {emailSaved ? (
           <div className="py-6 text-center space-y-1">
-            <p className="font-medium text-[#3D0C11]">You&rsquo;re on the list.</p>
-            <p className="text-sm text-[#6b5b5d]">
+            <p className="font-medium text-[var(--kn-ink)]">You&rsquo;re on the list.</p>
+            <p className="text-sm text-[var(--kn-muted)]">
               We&rsquo;ll send your plant list and seasonal planting reminders to {email}.
             </p>
           </div>
         ) : (
           <div className="max-w-md space-y-3">
-            <p className="text-sm font-semibold text-[#3D0C11]">
+            <p className="text-sm font-semibold text-[var(--kn-ink)]">
               Get a printable plant list for your garden
             </p>
-            <p className="text-sm text-[#6b5b5d]">
+            <p className="text-sm text-[var(--kn-muted)]">
               Enter your email and we&rsquo;ll send you a formatted plant list for the {group.name}{' '}
               — plus seasonal planting tips.
             </p>
@@ -467,11 +467,11 @@ export function PlantQuiz() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@example.com"
-                className="flex-1 border border-[#e8f5d8] rounded-sm px-3 py-2 text-sm text-[#3D0C11] placeholder:text-[#6b5b5d] focus:outline-none focus:border-[#BF6900]"
+                className="flex-1 border border-[var(--kn-line)] rounded-sm px-3 py-2 text-sm text-[var(--kn-ink)] placeholder:text-[var(--kn-muted)] focus:outline-none focus:border-[var(--kn-ochre)]"
               />
               <button
                 onClick={() => email && setEmailSaved(true)}
-                className="shrink-0 bg-[#3D0C11] text-white text-sm font-medium px-4 py-2 rounded-sm hover:bg-[#2d0a0d] transition-colors"
+                className="shrink-0 bg-[var(--kn-green-deep)] text-white text-sm font-medium px-4 py-2 rounded-sm hover:bg-[var(--kn-green-deep)] transition-colors"
               >
                 Send list
               </button>

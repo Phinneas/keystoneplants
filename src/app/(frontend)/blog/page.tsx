@@ -16,21 +16,21 @@ export default async function BlogPage() {
   return (
     <div className="max-w-3xl mx-auto px-6 py-12 space-y-12">
       <div className="space-y-2">
-        <h1 className="text-3xl font-bold text-[#3D0C11] font-[var(--font-figtree)]">
+        <h1 className="text-3xl font-bold text-[var(--kn-ink)] font-[var(--font-figtree)]">
           From the field
         </h1>
-        <p className="text-[#6b5b5d]">
+        <p className="text-[var(--kn-muted)]">
           Guides, species spotlights, and stories from the native plant community.
         </p>
       </div>
 
       {posts.length === 0 ? (
-        <p className="text-sm text-[#6b5b5d]">Posts coming soon.</p>
+        <p className="text-sm text-[var(--kn-muted)]">Posts coming soon.</p>
       ) : (
         <div className="divide-y divide-[#e8f5d8]">
           {posts.map((post) => (
             <article key={post.id} className="py-8 space-y-3">
-              <h2 className="text-xl font-bold text-[#3D0C11] font-[var(--font-figtree)] leading-snug">
+              <h2 className="text-xl font-bold text-[var(--kn-green)] font-[var(--font-figtree)] leading-snug">
                 <Link
                   href={`/blog/${post.slug}`}
                   className="hover:underline decoration-[#DDFC74] decoration-2 underline-offset-2"
@@ -38,20 +38,28 @@ export default async function BlogPage() {
                   {post.title}
                 </Link>
               </h2>
-              {post.excerpt && <p className="text-[#6b5b5d] leading-relaxed">{post.excerpt}</p>}
+              {post.excerpt && <p className="text-[var(--kn-muted)] leading-relaxed">{post.excerpt}</p>}
               <div className="flex items-center justify-between">
-                {post.publishedAt && (
-                  <time className="text-sm text-[#6b5b5d]">
-                    {new Date(post.publishedAt).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric',
-                    })}
-                  </time>
-                )}
+                <div className="flex items-center gap-x-2 gap-y-1 text-sm text-[var(--kn-muted)]">
+                  {post.authorName && (
+                    <span className="font-medium text-[var(--kn-ink)]">{post.authorName}</span>
+                  )}
+                  {post.publishedAt && (
+                    <>
+                      {post.authorName && <span aria-hidden="true">·</span>}
+                      <time>
+                        {new Date(post.publishedAt).toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric',
+                        })}
+                      </time>
+                    </>
+                  )}
+                </div>
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="text-sm font-medium text-[#BF6900] hover:text-[#CC5500] transition-colors"
+                  className="text-sm font-medium text-[var(--kn-ochre)] hover:text-[var(--kn-ochre-soft)] transition-colors"
                 >
                   Read →
                 </Link>

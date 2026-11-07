@@ -1,72 +1,112 @@
-import type { Metadata } from 'next'
-import { Figtree, Noto_Sans } from 'next/font/google'
-import Link from 'next/link'
-import './globals.css'
+import type { Metadata } from "next";
+import { Fraunces, Inter } from "next/font/google";
+import Link from "next/link";
+import { JsonLd } from "@/components/JsonLd";
+import { LivingEnvironment } from "@/components/LivingEnvironment";
+import { LogoGrowIn } from "@/components/LogoGrowIn";
+import { SwayingMeadow } from "@/components/SwayingMeadow";
+import "./globals.css";
 
-const figtree = Figtree({ subsets: ['latin'], variable: '--font-figtree' })
-const notoSans = Noto_Sans({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-noto',
-})
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-fraunces",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const NAVIGATION = [
+  ["Nurseries", "/nurseries"],
+  ["Plants", "/plants"],
+  ["Ecoregions", "/ecoregions"],
+  ["Plant quiz", "/quiz"],
+  ["By state", "/states"],
+  ["Canada", "/canada"],
+  ["Blog", "/blog"],
+] as const;
 
 export const metadata: Metadata = {
-  title: { default: 'Keystone Nurseries', template: '%s | Keystone Nurseries' },
-  description: 'Find native plant nurseries near you. Discover native plants across America.',
-}
+  metadataBase: new URL("https://www.keystonenurseries.com"),
+  title: { default: "Keystone Nurseries", template: "%s | Keystone Nurseries" },
+  description: "A living field guide for finding native plant nurseries and the plants that belong where you live.",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: "Keystone Nurseries",
+  },
+};
 
-export default function FrontendLayout({ children }: { children: React.ReactNode }) {
+export default function FrontendLayout({ children }: { children: React.ReactNode }): React.ReactElement {
   return (
-    <html lang="en" className={`${figtree.variable} ${notoSans.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-white text-[#3D0C11] font-[var(--font-noto)]">
-        <header className="border-b border-[#e8f5d8] bg-white px-6 py-4">
-          <nav className="max-w-5xl mx-auto flex items-center justify-between">
-            <Link
-              href="/"
-              className="text-xl font-bold tracking-tight text-[#3D0C11] font-[var(--font-figtree)]"
-            >
-              Keystone Nurseries
-            </Link>
-            <div className="flex gap-6 text-sm text-[#6b5b5d]">
-              <Link href="/nurseries" className="hover:text-[#3D0C11] transition-colors">
-                Nurseries
+    <html lang="en" className={`${fraunces.variable} ${inter.variable}`} suppressHydrationWarning>
+      <body>
+        <JsonLd data={{
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "Keystone Nurseries",
+          url: "https://www.keystonenurseries.com",
+          description: "A living field guide for finding native plant nurseries and the plants that belong where you live.",
+          potentialAction: {
+            "@type": "SearchAction",
+            target: "https://www.keystonenurseries.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string",
+          },
+        }} />
+        <LivingEnvironment />
+        <div className="field-shell">
+          <header className="field-header">
+            <nav className="field-nav" aria-label="Primary navigation">
+              <Link href="/" className="field-nav__brand" aria-label="Keystone Nurseries home">
+                <LogoGrowIn />
               </Link>
-              <Link href="/plants" className="hover:text-[#3D0C11] transition-colors">
-                Plants
-              </Link>
-              <Link href="/ecoregions" className="hover:text-[#3D0C11] transition-colors">
-                Ecoregions
-              </Link>
-              <Link href="/quiz" className="hover:text-[#3D0C11] transition-colors">
-                Plant Quiz
-              </Link>
-              <Link href="/states" className="hover:text-[#3D0C11] transition-colors">
-                By State
-              </Link>
-              <Link href="/canada" className="hover:text-[#3D0C11] transition-colors">
-                Canada
-              </Link>
-              <Link href="/blog" className="hover:text-[#3D0C11] transition-colors">
-                Blog
-              </Link>
+
+              <div className="field-nav__links">
+                {NAVIGATION.map(([label, href]) => (
+                  <Link key={href} href={href} className="kn-navlink">
+                    {label}
+                  </Link>
+                ))}
+              </div>
+
+              <div className="field-nav__tools">
+                <details className="field-nav__more">
+                  <summary>Explore</summary>
+                  <div>
+                    {NAVIGATION.map(([label, href]) => (
+                      <Link key={href} href={href} className="kn-navlink">
+                        {label}
+                      </Link>
+                    ))}
+                  </div>
+                </details>
+              </div>
+            </nav>
+          </header>
+
+          <main>{children}</main>
+
+          <footer className="field-footer">
+            <SwayingMeadow />
+            <div className="field-footer__inner">
+              <div>
+                <p className="field-footer__brand">Keystone Nurseries</p>
+                <p className="mt-2 text-sm text-white/65">A living field guide for native plant discovery.</p>
+                <nav className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm text-white/55" aria-label="Legal">
+                  <Link href="/privacy" className="transition-colors hover:text-white">Privacy Policy</Link>
+                  <Link href="/terms" className="transition-colors hover:text-white">Terms of Service</Link>
+                </nav>
+              </div>
+              <p className="field-footer__note">
+                Nursery information is gathered from public records and community submissions. Help the guide grow by sharing a nursery near you.
+              </p>
             </div>
-          </nav>
-        </header>
-
-        <main className="flex-1">{children}</main>
-
-        <footer
-          className="px-6 py-10 text-sm text-[#D3F9B5]"
-          style={{ background: 'linear-gradient(135deg, #3D0C11 0%, #2d5016 100%)' }}
-        >
-          <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="font-bold text-base font-[var(--font-figtree)]">Keystone Nurseries</p>
-            <p className="text-[#a8d18a]">
-              Nursery data sourced from public records and community submissions.
-            </p>
-          </div>
-        </footer>
+          </footer>
+        </div>
       </body>
     </html>
-  )
+  );
 }
